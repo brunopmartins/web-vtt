@@ -26,7 +26,7 @@ body {
     background-color: var(--cor-do-background);
 }
 
-body, p, input {
+body, p, input, textarea {
     color: var(--cor-do-texto);
 }
 
@@ -35,7 +35,7 @@ h1, h2, h3, h4 {
 }
 
 
-header, section, #character-name #character-main-info,
+header, section, #character-name, #character-main-info,
 #att-scores ul li, .modifier input, .list-section,
 #character-main-info ul li input, .att-label,
 #inspiration input, #proficiency-bonus input,
@@ -74,6 +74,6 @@ header, section, #character-name #character-main-info,
     background-color: var(--detalhes);
 }
 
-input {
+input, textarea{
     background-color: var(--cor-dos-campos);
 }
