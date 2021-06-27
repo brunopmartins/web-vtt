@@ -1,23 +1,4 @@
-@media (prefers-color-scheme: dark) {
-    :root {
-        --cor-do-texto: #cdc1ac;
-        --cor-do-background: #222;
-        --cor-das-bordas: #664c07;
-        --cor-dos-titulos: #b17305;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        --cor-do-texto: #111111;
-        --cor-do-background: #cdc49d;
-        --cor-das-bordas: #a47001;
-        --cor-dos-titulos: #644000;
-    }
-}
-
 body {
-    background-color: var(--cor-do-background);
     text-align: justify;
 }
 
@@ -36,25 +17,12 @@ h3 {
     padding: 0 0 1em;
 }
 
-body, p {
-    color: var(--cor-do-texto);
-}
-
-h1, h2, h3, h4 {
-    color: var(--cor-dos-titulos);
-}
-
 #ficha-npc {
     width: 600px;
 }
 
-header {
-    border-bottom: 2px solid var(--cor-das-bordas);
-    padding-bottom: 0.5em;
-}
-
 header, section{
-    border-bottom: 2px solid var(--cor-das-bordas);
+    border-bottom: 2px solid;
     padding-bottom: 0.5em;
     padding-top: 0.5em;
 }

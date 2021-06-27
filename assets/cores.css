@@ -1,0 +1,79 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-do-texto: #ffddbb;
+        --cor-do-background: #222;
+        --cor-das-bordas: #664c07;
+        --cor-dos-titulos: #b17305;
+        --cor-dos-frames: #3b2c16;
+        --cor-dos-campos: #261912;
+        --detalhes: #0c0b0a;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --cor-do-texto: #221100;
+        --cor-do-background: #cdc49d;
+        --cor-das-bordas: #a47001;
+        --cor-dos-titulos: #644000;
+        --cor-dos-frames: #d6b996;
+        --cor-dos-campos: #fed;
+        --detalhes: #e2d9cd;
+    }
+}
+
+body {
+    background-color: var(--cor-do-background);
+}
+
+body, p, input {
+    color: var(--cor-do-texto);
+}
+
+h1, h2, h3, h4 {
+    color: var(--cor-dos-titulos);
+}
+
+
+header, section, #character-name #character-main-info,
+#att-scores ul li, .modifier input, .list-section,
+#character-main-info ul li input, .att-label,
+#inspiration input, #proficiency-bonus input,
+.list-section ul li input[type=text],
+.list-section ul li input[type=checkbox],
+#passive-perception input, .text-box label, .text-box textarea,
+#physical-attr .ac-init-speed div label,
+#physical-attr .ac-init-speed div input,
+#physical-attr .hp .regular-hp,
+#physical-attr .hp .regular-hp .max-hp input,
+#physical-attr .hp .temporary-hp,
+#physical-attr .hitdice .hd-ds,
+#physical-attr .hitdice .hd-ds .total input,
+#physical-attr .death-save .hd-ds,
+#physical-attr .death-save .hd-ds .marks .ds .ds-check input[type=checkbox],
+#attacks-and-spellcasting,
+.equipment,
+.equipment > div .money ul li label,
+.equipment > div .money ul li input,
+#traits div,
+#features div{
+    border-color: var(--cor-das-bordas);
+}
+
+#character-name, #att-scores, #physical-attr, #traits div{
+    background-color: var(--cor-dos-frames);
+}
+
+#att-scores ul li,
+#physical-attr .ac-init-speed div label,
+#physical-attr .hp .regular-hp,
+#physical-attr .hp .temporary-hp,
+#physical-attr .hitdice .hd-ds,
+#physical-attr .death-save .hd-ds,
+#traits {
+    background-color: var(--detalhes);
+}
+
+input {
+    background-color: var(--cor-dos-campos);
+}
