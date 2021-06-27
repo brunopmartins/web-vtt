@@ -1,3 +1,5 @@
+@import "cores.css";
+
 html {
     font-family: sans-serif;
     line-height: 1.15;
@@ -57,7 +59,7 @@ textarea {
 }
 
 .list-section {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     padding: 10px 5px;
 }
@@ -84,7 +86,7 @@ header {
 }
 
 #character-name {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-right: 0;
     border-radius: 10px 0 0 10px;
     padding: 5px;
@@ -108,7 +110,7 @@ header {
 
 #character-main-info {
     width: 70%;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     padding-left: 1em;
     padding-right: 1em;
@@ -184,11 +186,12 @@ rules for the attributes
 #att-scores ul li {
     height: 80px;
     width: 70px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     text-align: center;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    background-color: var(--detalhes);
 }
 
 .score label {
@@ -211,7 +214,7 @@ rules for the attributes
 .modifier input {
     width: 30px;
     height: 20px;
-    border: 1px inset;
+    border: 1px inset var(--cor-das-bordas);
     border-radius: 20px;
     margin: -1px;
     text-align: center;
@@ -222,7 +225,7 @@ rules for the attributes
     width: 100%;
     height: 18px;
     margin-top: 6px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-left: 0;
     text-align: center;
 }
@@ -244,7 +247,7 @@ rules for the attributes
 
 #inspiration input {
     appearance: none;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     padding: 15px;
     border-radius: 10px;
     margin: 0;
@@ -253,7 +256,7 @@ rules for the attributes
 #proficiency-bonus input {
     width: 30px;
     height: 28px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     text-align: center;
     border-radius: 10px;
 }
@@ -280,7 +283,7 @@ rules for the attributes
     font-size: 12px;
     text-align: center;
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid var(--cor-das-bordas);
     order: 2;
 }
 
@@ -288,13 +291,13 @@ rules for the attributes
     appearance: none;
     width: 10px;
     height: 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     order: 1;
 }
 
 .list-section ul li input[type=checkbox]:checked {
-    background-color: #f30;
+    background-color: var(--checked);
 }
 
 .list-section .label {
@@ -309,13 +312,13 @@ rules for the attributes
     width: 30px;
     height: 28px;
     text-align: center;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
 }
 
 .text-box label {
     text-align: center;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-top: 0;
     font-size: 10px;
     width: calc(100% - 20px - 2px);
@@ -325,7 +328,7 @@ rules for the attributes
 }
 
 .text-box textarea {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
 }
 
 #other-profs textarea {
@@ -359,19 +362,20 @@ rules for the physical attributes section
 #physical-attr .ac-init-speed div label {
     font-size: 8px;
     width: 50px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-top: 0;
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 0 0 10px 10px;
+    background-color: var(--detalhes);
 }
 
 #physical-attr .ac-init-speed div input {
     height: 70px;
     width: 70px;
     border-radius: 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     text-align: center;
     font-size: 30px;
 }
@@ -381,9 +385,10 @@ rules for the physical attributes section
 }
 
 #physical-attr .hp .regular-hp {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     margin: 10px 10px 5px;
     border-radius: 10px 10px 0 0;
+    background-color: var(--detalhes);
 }
 
 #physical-attr .hp .regular-hp .max-hp {
@@ -400,7 +405,7 @@ rules for the physical attributes section
 #physical-attr .hp .regular-hp .max-hp input {
     width: 40%;
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid var(--cor-das-bordas);
     font-size: 12px;
     text-align: center;
 }
@@ -427,10 +432,11 @@ rules for the physical attributes section
 
 #physical-attr .hp .temporary-hp {
     margin: 0 10px 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 0 0 10px 10px;
     display: flex;
     flex-direction: column-reverse;
+    background-color: var(--detalhes);
 }
 
 #physical-attr .hp .temporary-hp label {
@@ -454,11 +460,12 @@ rules for the physical attributes section
 
 #physical-attr .hitdice .hd-ds {
     margin: 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     height: 80px;
+    background-color: var(--detalhes);
 }
 
 #physical-attr .hitdice .hd-ds .total {
@@ -478,7 +485,7 @@ rules for the physical attributes section
     font-size: 12px;
     flex-grow: 1;
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid var(--cor-das-bordas);
     width: 50%;
     margin-right: 0.25em;
     padding: 0 0.25em;
@@ -510,11 +517,12 @@ rules for the physical attributes section
 
 #physical-attr .death-save .hd-ds {
     margin: 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     display: flex;
     flex-direction: column-reverse;
     height: 80px;
+    background-color: var(--detalhes);
 }
 
 #physical-attr .death-save .hd-ds .label {
@@ -552,23 +560,25 @@ rules for the physical attributes section
     appearance: none;
     width: 10px;
     height: 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     cursor: pointer;
     margin: 0;
 }
 
 #physical-attr .death-save .hd-ds .marks .ds .ds-check input[type=checkbox]:checked {
-    background-color: black;
+    background-color: var(--checked);
 }
+
 
 /*
 rules for attacks and spellcasting
 */
 #attacks-and-spellcasting {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     margin-top: 10px;
+    background-color: var(--cor-dos-frames);
 }
 
 #attacks-and-spellcasting div {
@@ -598,9 +608,10 @@ rules for attacks and spellcasting
 }
 
 .equipment {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     margin-top: 10px;
+    background-color: var(--cor-dos-frames);
 }
 
 .equipment > div {
@@ -631,7 +642,7 @@ rules for attacks and spellcasting
 }
 
 .equipment > div .money ul li label {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px 0 0 10px;
     border-right: 0;
     width: 20px;
@@ -642,7 +653,7 @@ rules for attacks and spellcasting
 }
 
 .equipment > div .money ul li input {
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     width: 40px;
     padding: 10px 3px;
@@ -679,7 +690,7 @@ traits
     display: flex;
     flex-direction: column-reverse;
     padding: 5px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
 }
 
 #traits div label {
@@ -699,8 +710,9 @@ traits
 }
 
 #features div {
+    background-color: var(--cor-dos-frames);
     padding: 10px;
-    border: 1px solid;
+    border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     display: flex;
     flex-direction: column-reverse;
@@ -714,4 +726,8 @@ traits
     border: 0;
     padding: 5px;
     height: 43em;
+}
+
+#character-name, #att-scores, #physical-attr, #traits div{
+    background-color: var(--cor-dos-frames);
 }
