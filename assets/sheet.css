@@ -75,6 +75,16 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 
+.screen {
+    display: none;
+    visibility: hidden;
+}
+
+.screen.active {
+    display: flex;
+    visibility: visible;
+}
+
 /*
 rules for the header
 the header contains the character name, class & level, background, race, allignment and xp
@@ -141,6 +151,46 @@ header {
     border-bottom: 1px solid;
 }
 
+/*
+rules for the navigation menu
+*/
+
+#menu {
+    margin: 10px 0 10px 0;
+}
+
+#menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    border-right: 1px solid rgba(255, 255, 255, .1);
+}
+
+#menu li {
+    display: inline-block;
+    list-style-type: none;
+    list-style-image: none;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    border: 1px solid black;
+}
+
+#menu a {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    color: currentColor;
+    text-decoration: none;
+}
+
 
 /* 
 rules for the main character sheet
@@ -148,7 +198,6 @@ rules for the main character sheet
 main {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .outer-section {
