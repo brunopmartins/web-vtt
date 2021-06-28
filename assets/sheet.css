@@ -35,6 +35,11 @@ label {
     font-size: 12px;
 }
 
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
 textarea {
     font-size: 12px;
     font-family: inherit;
@@ -45,6 +50,7 @@ textarea {
     resize: none;
     overflow: hidden;
     height: 15em;
+    overflow-y: scroll;
 }
 
 .box {
@@ -177,7 +183,11 @@ rules for the navigation menu
     width: 100%;
     text-align: center;
     margin: 0;
-    border: 1px solid black;
+    border: 1px solid var(--cor-das-bordas);
+}
+
+#menu li h3 {
+    margin: 0;
 }
 
 #menu a {
@@ -191,14 +201,48 @@ rules for the navigation menu
     text-decoration: none;
 }
 
+/*
+rules for the bio
+*/
+
+#bio-main {
+    flex-direction: column;
+}
+
+#bio {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+}
+
+#bio-picture {
+    margin: 10px;
+}
+
+#bio-picture img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+#bio-text {
+    margin: 10px;
+    flex: 1;
+}
+
+#bio-text textarea {
+    height: 300px;
+}
+
+#notes {
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* 
 rules for the main character sheet
 */
-main {
-    display: flex;
-    justify-content: space-between;
-}
 
 .outer-section {
     width: 32%;
