@@ -1,11 +1,11 @@
 @media (prefers-color-scheme: dark) {
     :root {
-        --cor-do-texto: #f3f5ae;
-        --cor-do-background: #100910;
+        --cor-do-texto: #f8fabb;
+        --cor-do-background: #0f0d0f;
         --cor-das-bordas: #77777777;
-        --cor-dos-titulos: #c6b560;
+        --cor-dos-titulos: #cab44a;
         --cor-dos-frames: #99999911;
-        --cor-dos-campos: #050510;
+        --cor-dos-campos: #0a0509;
         --detalhes: #99999911;
         --checked: #a0026d;
     }
