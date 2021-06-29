@@ -59,3 +59,32 @@ document.querySelector('#notes textarea').innerHTML =
     'accumsan ac ante. Donec id justo sit amet nisi pulvinar laoreet. Ut nulla velit, ' + 
     'tempus tristique consectetur ac, fringilla in orci. Praesent tristique nisi quis ' + 
     'quam tincidunt consequat. Sed aliquet felis nec dui sagittis, non hendrerit lectus ornare.';
+
+// inject sheet info
+let str = document.querySelector('#str-score-input');
+str.value = 8;
+let dex = document.querySelector('#dex-score-input');
+dex.value = 12;
+let con = document.querySelector('#con-score-input');
+con.value = 15;
+let int = document.querySelector('#int-score-input');
+int.value = 14;
+let wis = document.querySelector('#wis-score-input');
+wis.value = 18;
+let cha = document.querySelector('#cha-score-input');
+cha.value = 12;
+
+const scores = [
+    {'att': 'str', 'value': str.value}, 
+    {'att': 'dex', 'value': dex.value}, 
+    {'att': 'con', 'value': con.value}, 
+    {'att': 'int', 'value': int.value}, 
+    {'att': 'wis', 'value': wis.value}, 
+    {'att': 'cha', 'value': cha.value}
+];
+
+for (score of scores) {
+    document.querySelectorAll(`.${score.att}-mod`).forEach(function (input) {
+        input.value = calculateModifier(score.value);
+    });
+}
