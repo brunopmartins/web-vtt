@@ -1,7 +1,8 @@
 :root {
   --n-rows: 2;
-  --n-cols: 12;
+  --n-cols: 11;
 }
+.hex-cell:nth-of-type(6n) {grid-column-start: 2}
 
 #colmeia {
   --escala: calc(20vw/var(--n-cols));
