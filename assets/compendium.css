@@ -5,6 +5,8 @@
 
 #painel-lateral {
     grid-column: 2;
+    place-content: center;
+    text-align: center;
 }
 
 #logo {
