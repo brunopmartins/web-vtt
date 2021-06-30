@@ -1,0 +1,12 @@
+#compendio {
+    display: grid;
+    grid-template-columns: auto 400px;
+}
+
+#painel-lateral {
+    grid-column: 2;
+}
+
+#logo {
+    width: 50px;
+}
