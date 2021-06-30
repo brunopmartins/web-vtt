@@ -1,6 +1,21 @@
 // This calculates modifier based on the ability score
-function calculateModifier(score) {
+function calculateScoreModifier(score) {
     return Math.floor((score - 10)/2);
+}
+
+function updateScoreModifier(att, score) {
+    document.querySelectorAll(`.${att}-mod`).forEach(function (input) {
+        let modifier = calculateScoreModifier(score);
+        input.value = modifier;
+    });
+}
+
+function getProficiencyModifier(level) {
+    if (level < 5)  return 2;
+    if (level < 9)  return 3;
+    if (level < 13) return 4;
+    if (level < 17) return 5;
+    return 6;
 }
 
 
@@ -29,7 +44,10 @@ if (location.hash) {
 // inject data in front-end. remove later
 // inject header info
 document.querySelector('#character-name-input').value = 'Praestes Solis';
-document.querySelector('#class-and-level-input').value = 'Cleric 7';
+const class_and_level = document.querySelector('#class-and-level-input');
+class_and_level.value = 'Cleric 7';
+let level = class_and_level.value.match(/(\d+)/)[0];
+document.querySelector('#proficiency-bonus-input').value = `+${getProficiencyModifier(level)}`;
 document.querySelector('#background-input').value = 'Acolyte';
 document.querySelector('#race-input').value = 'Half-Elf';
 document.querySelector('#alignment-input').value = 'Lawful Neutral';
@@ -61,30 +79,22 @@ document.querySelector('#notes textarea').innerHTML =
     'quam tincidunt consequat. Sed aliquet felis nec dui sagittis, non hendrerit lectus ornare.';
 
 // inject sheet info
-let str = document.querySelector('#str-score-input');
-str.value = 8;
-let dex = document.querySelector('#dex-score-input');
-dex.value = 12;
-let con = document.querySelector('#con-score-input');
-con.value = 15;
-let int = document.querySelector('#int-score-input');
-int.value = 14;
-let wis = document.querySelector('#wis-score-input');
-wis.value = 18;
-let cha = document.querySelector('#cha-score-input');
-cha.value = 12;
-
 const scores = [
-    {'att': 'str', 'value': str.value}, 
-    {'att': 'dex', 'value': dex.value}, 
-    {'att': 'con', 'value': con.value}, 
-    {'att': 'int', 'value': int.value}, 
-    {'att': 'wis', 'value': wis.value}, 
-    {'att': 'cha', 'value': cha.value}
+    {'att': 'str', 'value': 8}, 
+    {'att': 'dex', 'value': 12}, 
+    {'att': 'con', 'value': 15}, 
+    {'att': 'int', 'value': 14}, 
+    {'att': 'wis', 'value': 18}, 
+    {'att': 'cha', 'value': 12}
 ];
 
 for (score of scores) {
-    document.querySelectorAll(`.${score.att}-mod`).forEach(function (input) {
-        input.value = calculateModifier(score.value);
+    const score_input = document.querySelector(`#${score.att}-score-input`);
+    score_input.value = score.value;
+    score_input.score_att = score.att;
+    let att = score.att.valueOf()
+    score_input.addEventListener('change', (event) => {
+        updateScoreModifier(att, event.target.value);
     });
+    updateScoreModifier(score.att, score.value);
 }
