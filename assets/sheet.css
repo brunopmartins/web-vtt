@@ -824,3 +824,39 @@ traits
 #character-name, #att-scores, #physical-attr, #traits div{
     background-color: var(--cor-dos-frames);
 }
+
+/*
+rules for the spellcasting section
+*/
+
+#spells-header {
+    border: 1px solid var(--cor-das-bordas);
+    border-radius: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+}
+
+#spells-header ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#spells-header ul li {
+    width: 180px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#spells-header ul li label {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#spells-header ul li input {
+    border-radius: 10px;
+    border: 1px solid var(--cor-das-bordas);
+    text-align: center;
+    font-size: 30px;
+}

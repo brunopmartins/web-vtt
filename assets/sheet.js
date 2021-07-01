@@ -92,7 +92,7 @@ for (score of scores) {
     const score_input = document.querySelector(`#${score.att}-score-input`);
     score_input.value = score.value;
     score_input.score_att = score.att;
-    let att = score.att.valueOf()
+    let att = score.att.valueOf();
     score_input.addEventListener('change', (event) => {
         updateScoreModifier(att, event.target.value);
     });
