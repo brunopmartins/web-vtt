@@ -19,11 +19,15 @@ h3 {
     padding: 0 0 1em;
 }
 
+h2 {
+    margin-top: 0;
+}
+
 .card {
     width: 600px;
 }
 
-header, section{
+header, section {
     border-bottom: 2px solid;
     padding-bottom: 0.5em;
     padding-top: 0.5em;
@@ -53,12 +57,41 @@ table {
     width: 100%;
     text-align: center;
     margin-bottom: 1em;
+
 }
 
 th {
     background-color: var(--cor-dos-frames);
+    border-bottom: 3px solid var(--cor-das-bordas);
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px solid var(--cor-das-bordas);
 }
 
 ul {
     padding-left: 2em;
 }
+
+li {
+    padding-bottom: 0.5em;
+}
+.first-of-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Specific to Class Card */
+
+#card-classe {
+     width: 1200px;
+}
+
+#card-classe h3 {
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+}
+
+
