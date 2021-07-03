@@ -9,7 +9,7 @@ p {
     margin: 0;
 }
 
-h1, #ac-hp-speed p, #traits p {
+h1, .card-main p {
     padding: 0;
     margin: 0;
 }
@@ -19,7 +19,7 @@ h3 {
     padding: 0 0 1em;
 }
 
-#ficha-npc {
+.card {
     width: 600px;
 }
 
@@ -29,7 +29,7 @@ header, section{
     padding-top: 0.5em;
 }
 
-#stats {
+#stats-bar {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
@@ -37,9 +37,28 @@ header, section{
     text-align: center;
 }
 
-#stats div {
+#stats-bar div {
     justify-content: space-between;
     display: flex;
     flex-direction: column;
     padding: 0;
+}
+
+.no-section-h3 {
+    padding: 1em 0 1em 0;
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+th {
+    background-color: var(--cor-dos-frames);
+}
+
+ul {
+    padding-left: 2em;
 }
