@@ -829,12 +829,16 @@ traits
 rules for the spellcasting section
 */
 
-#spells-header {
+#spells-main {
+    flex-direction: column;
+}
+
+#spells-header, #spells-section {
     border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
     padding-left: 1em;
     padding-right: 1em;
-    width: 100%;
+    width: calc(800px - 2em);
 }
 
 #spells-header ul {
@@ -854,9 +858,26 @@ rules for the spellcasting section
     text-align: center;
 }
 
-#spells-header ul li input {
+#spells-header ul li input,select {
     border-radius: 10px;
     border: 1px solid var(--cor-das-bordas);
     text-align: center;
     font-size: 30px;
+}
+
+#spells-section {
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 250px 250px 250px 250px;
+    justify-content: space-between;
+}
+
+#spells-section section {
+    margin: 1em 0 1em 0;
+}
+
+#spells-section table {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--cor-das-bordas);
 }

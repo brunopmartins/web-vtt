@@ -10,6 +10,10 @@ function updateScoreModifier(att, score) {
     });
 }
 
+function calculateSpellSaveDC(score) {
+
+}
+
 function getProficiencyModifier(level) {
     if (level < 5)  return 2;
     if (level < 9)  return 3;
@@ -97,4 +101,24 @@ for (score of scores) {
         updateScoreModifier(att, event.target.value);
     });
     updateScoreModifier(score.att, score.value);
+}
+
+// inject spells info
+document.querySelector('#spellcasting-class-input').value = 'Cleric';
+document.querySelector('#spellcasting-ability-input').value = 'wis';
+
+let cantrip_tbody = document.querySelector('#cantrips table tbody');
+for (let j = 1; j <= 5; j++) {
+    let new_row = cantrip_tbody.insertRow(-1);
+    let new_spell = document.createTextNode(`The ${j}o cantrip`);
+    new_row.appendChild(new_spell);
+}
+
+for (let i = 1; i <= 9; i++) {
+    let tbody = document.querySelector(`#spells-lvl-${i} table tbody`);
+    for (let j = 1; j <= 5; j++) {
+        let new_row = tbody.insertRow(-1);
+        let new_spell = document.createTextNode(`The ${j}o level ${i} Spell`);
+        new_row.appendChild(new_spell);
+    }
 }
