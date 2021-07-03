@@ -22,6 +22,14 @@ h1 {
     background-color: var(--cor-dos-frames);
 }
 
+#lista-compendio {
+    display: flex;
+    background-color: var(--cor-dos-frames);
+    margin: 1em;
+    text-align: justify;
+
+}
+
 #logo {
     width: 100px;
 }
