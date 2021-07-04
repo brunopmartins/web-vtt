@@ -44,3 +44,7 @@ header, section {
 input, textarea{
     background-color: var(--cor-dos-campos);
 }
+
+.no-background {
+    background-color: #00000000 !important;
+}
