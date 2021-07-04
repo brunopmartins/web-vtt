@@ -28,7 +28,7 @@ body {
     background-color: var(--cor-do-background);
 }
 
-body, p, input, textarea {
+body, p, input, textarea, select {
     color: var(--cor-do-texto);
 }
 
@@ -41,7 +41,7 @@ header, section {
     border-color: var(--cor-das-bordas);
 }
 
-input, textarea{
+input, textarea, select {
     background-color: var(--cor-dos-campos);
 }
 

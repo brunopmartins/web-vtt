@@ -1,4 +1,4 @@
-@import "cores.css";
+@import "../cores.css";
 
 html {
     font-family: sans-serif;
@@ -35,6 +35,11 @@ label {
     font-size: 12px;
 }
 
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
 textarea {
     font-size: 12px;
     font-family: inherit;
@@ -45,6 +50,7 @@ textarea {
     resize: none;
     overflow: hidden;
     height: 15em;
+    overflow-y: scroll;
 }
 
 .box {
@@ -73,6 +79,16 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
+}
+
+.screen {
+    display: none;
+    visibility: hidden;
+}
+
+.screen.active {
+    display: flex;
+    visibility: visible;
 }
 
 /*
@@ -141,15 +157,92 @@ header {
     border-bottom: 1px solid;
 }
 
+/*
+rules for the navigation menu
+*/
+
+#menu {
+    margin: 10px 0 10px 0;
+}
+
+#menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    border-right: 1px solid rgba(255, 255, 255, .1);
+}
+
+#menu li {
+    display: inline-block;
+    list-style-type: none;
+    list-style-image: none;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    border: 1px solid var(--cor-das-bordas);
+}
+
+#menu li h3 {
+    margin: 0;
+}
+
+#menu a {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    color: currentColor;
+    text-decoration: none;
+}
+
+/*
+rules for the bio
+*/
+
+#bio-main {
+    flex-direction: column;
+}
+
+#bio {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+}
+
+#bio-picture {
+    margin: 10px;
+}
+
+#bio-picture img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+#bio-text {
+    margin: 10px;
+    flex: 1;
+}
+
+#bio-text textarea {
+    height: 300px;
+}
+
+#notes {
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* 
 rules for the main character sheet
 */
-main {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
 
 .outer-section {
     width: 32%;
@@ -730,4 +823,61 @@ traits
 
 #character-name, #att-scores, #physical-attr, #traits div{
     background-color: var(--cor-dos-frames);
+}
+
+/*
+rules for the spellcasting section
+*/
+
+#spells-main {
+    flex-direction: column;
+}
+
+#spells-header, #spells-section {
+    border: 1px solid var(--cor-das-bordas);
+    border-radius: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: calc(800px - 2em);
+}
+
+#spells-header ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#spells-header ul li {
+    width: 180px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#spells-header ul li label {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#spells-header ul li input,select {
+    border-radius: 10px;
+    border: 1px solid var(--cor-das-bordas);
+    text-align: center;
+    font-size: 30px;
+}
+
+#spells-section {
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 250px 250px 250px 250px;
+    justify-content: space-between;
+}
+
+#spells-section section {
+    margin: 1em 0 1em 0;
+}
+
+#spells-section table {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--cor-das-bordas);
 }
