@@ -58,7 +58,7 @@ document.querySelector('#alignment-input').value = 'Lawful Neutral';
 document.querySelector('#xp-input').value = '0';
 
 // inject bio info
-document.querySelector('#bio-picture img').src = 'sheet_bio_img.png';
+document.querySelector('#bio-picture img').src = '../images/sheet_bio_img.png';
 document.querySelector('#bio-text textarea').innerHTML = 
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' + 
     'Vestibulum ultricies sit amet erat eget pulvinar. Vestibulum vel rutrum nibh. ' + 
