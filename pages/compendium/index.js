@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../../styles/Compendium.module.css";
 
 const COMPENDIUM_ITEMS = [
@@ -23,7 +22,7 @@ export default function Compendium() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.painelLateral}>
-        <Image
+        <img
           className={styles.logo}
           width={100}
           height={100}
@@ -38,11 +37,7 @@ export default function Compendium() {
               <div key={itemName} className="hex-cell">
                 <div>
                   {/* TODO: Substituir as imagens pelos ícones */}
-                  <Image
-                    src="/beeholder-logo.png"
-                    layout="fill"
-                    alt={itemName}
-                  />
+                  <img src="/beeholder-logo.png" layout="fill" alt={itemName} />
                 </div>
               </div>
             ))}
