@@ -22,6 +22,10 @@ function getProficiencyModifier(level) {
     return 6;
 }
 
+function updateProficienteModifier(level) {
+    document.querySelector('#proficiency-bonus-input').value = getProficiencyModifier(level);
+}
+
 
 function chooseScreen (screenId) {
     const screens = document.querySelectorAll('.screen');
@@ -51,11 +55,20 @@ document.querySelector('#character-name-input').value = 'Praestes Solis';
 const class_and_level = document.querySelector('#class-and-level-input');
 class_and_level.value = 'Cleric 7';
 let level = class_and_level.value.match(/(\d+)/)[0];
-document.querySelector('#proficiency-bonus-input').value = `+${getProficiencyModifier(level)}`;
+class_and_level.addEventListener('change', event => {
+    updateProficienteModifier(event.target.value.match(/(\d+)/)[0]);
+});
+
+document.querySelector('#proficiency-bonus-input').value = `${getProficiencyModifier(level)}`;
 document.querySelector('#background-input').value = 'Acolyte';
 document.querySelector('#race-input').value = 'Half-Elf';
 document.querySelector('#alignment-input').value = 'Lawful Neutral';
 document.querySelector('#xp-input').value = '0';
+
+document.querySelector('#armor-class-input').value = 16;
+document.querySelector('#speed-input').value = 30;
+document.querySelector('#max-hp-input').value = 44;
+document.querySelector('#current-hp-input').value = 44;
 
 // inject bio info
 document.querySelector('#bio-picture img').src = '../images/sheet_bio_img.png';
