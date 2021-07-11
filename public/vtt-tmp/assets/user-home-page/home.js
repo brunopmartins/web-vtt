@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./home.css";
-import logo from "../../../beerholder.png"
+import logo from "../../../beeholder-logo.png"
 const InputText = (props) => {
   return (
     <>
