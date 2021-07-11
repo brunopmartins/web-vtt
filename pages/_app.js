@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import '../styles/colmeia.css'
-
+import '../styles/home.css'
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
