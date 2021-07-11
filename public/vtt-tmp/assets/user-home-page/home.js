@@ -53,7 +53,7 @@ const VTTName = () => {
     <>
       <div className={"VTT-name"}>
         <ImageHolder size="medium" />
-        <h3>Beer Holder VTT</h3>
+        <h3 className={"h3"}>Beer Holder VTT</h3>
       </div>
     </>
   );
@@ -88,7 +88,7 @@ const PjSheetListHolder = (props) => {
   return (
     <>
       <div className={"flex-column"}>
-        <h3 className={"flex-align-center"}>Suas Fichas</h3>
+        <h3 className={"h3 flex-align-center"}>Suas Fichas</h3>
         <PJSheetList pjs={["estes", "estes", "estes", "estes"]} />
       </div>
     </>
