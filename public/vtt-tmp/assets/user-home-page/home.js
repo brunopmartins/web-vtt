@@ -28,7 +28,7 @@ const InputSubmit = (props) => {
           handleChange={handleChange}
         />
         <button
-          className={"buttonfixedSize"}
+          className={"button buttonfixedSize"}
           onClick={() => {
             props.handleClick(input);
           }}
@@ -64,7 +64,7 @@ const UserProfileAcess = () => {
       <div className={"profile-acess-div  flex-align-center"}>
         <ImageHolder size="small" />
         <button
-          className={"buttonFit"}
+          className={"button buttonFit"}
           onClick={() => {
             console.log("hehe");
           }}
@@ -72,7 +72,7 @@ const UserProfileAcess = () => {
           User Options
         </button>
         <button
-          className={"buttonFit"}
+          className={"button buttonFit"}
           onClick={() => {
             console.log("hehe");
           }}
@@ -108,7 +108,7 @@ const PJSheet = (props) => {
 const PJSheetList = (props) => {
   return (
     <>
-      <ul>
+      <ul className={"ul"}>
         {props.pjs.map((pj) => {
           return (
             <li>
