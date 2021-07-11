@@ -43,7 +43,7 @@ const ImageHolder = (props) => {
   return (
     <>
       <div className={"image-holder"}>
-        <img src={logo} className={"image " + props.size} />
+        <img src={"/beeholder-logo.png"} className={"image " + props.size} />
       </div>
     </>
   );
