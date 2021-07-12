@@ -21,7 +21,7 @@ export default function Login() {
         <h3>Faça login para jogar com seus amigos.</h3>
         <form
           className={styles.formulario}
-          action="/userHomePage"
+          action="/userhomepage"
           method="post"
         >
           <div className={styles.campoFormulario}>
