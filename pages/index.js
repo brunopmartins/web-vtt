@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import "./../styles/UserHomePage.module.css";
+import cx from "classnames";
+import styles from "./../styles/UserHomePage.module.css";
 import logo from "./../public/beeholder-logo.png";
+
 const InputText = (props) => {
   return (
     <>
       <input
-        className="inputText"
+        className={styles.inputText}
         placeholder={props.placeholder}
         value={props.value}
         onChange={props.handleChange}
@@ -21,14 +23,14 @@ const InputSubmit = (props) => {
   };
   return (
     <>
-      <div className={"InputSubmit"}>
+      <div className={styles.InputSubmit}>
         <InputText
           value={input}
           placeholder={props.placeholder}
           handleChange={handleChange}
         />
         <button
-          className={"button buttonfixedSize"}
+          className={cx(styles.button, styles.buttonfixedSize)}
           onClick={() => {
             props.handleClick(input);
           }}
@@ -42,8 +44,11 @@ const InputSubmit = (props) => {
 const ImageHolder = (props) => {
   return (
     <>
-      <div className={"image-holder"}>
-        <img src={"/beeholder-logo.png"} className={"image " + props.size} />
+      <div className={styles.imageHolder}>
+        <img
+          src={"/beeholder-logo.png"}
+          className={cx(styles.image, styles[props.size])}
+        />
       </div>
     </>
   );
@@ -51,9 +56,9 @@ const ImageHolder = (props) => {
 const VTTName = () => {
   return (
     <>
-      <div className={"VTT-name"}>
+      <div className={styles.VTTname}>
         <ImageHolder size="medium" />
-        <h3 className={"h3"}>Beer Holder VTT</h3>
+        <h3 className={styles.h3}>Beer Holder VTT</h3>
       </div>
     </>
   );
@@ -61,10 +66,10 @@ const VTTName = () => {
 const UserProfileAcess = () => {
   return (
     <>
-      <div className={"profile-acess-div  flex-align-center"}>
+      <div className={cx(styles.profileAccessDiv, styles.flexAlignCenter)}>
         <ImageHolder size="small" />
         <button
-          className={"button buttonFit"}
+          className={cx(styles.button, styles.buttonFit)}
           onClick={() => {
             console.log("hehe");
           }}
@@ -72,7 +77,7 @@ const UserProfileAcess = () => {
           User Options
         </button>
         <button
-          className={"button buttonFit"}
+          className={cx(styles.button, styles.buttonFit)}
           onClick={() => {
             console.log("hehe");
           }}
@@ -87,8 +92,8 @@ const UserProfileAcess = () => {
 const PjSheetListHolder = (props) => {
   return (
     <>
-      <div className={"flex-column"}>
-        <h3 className={"h3 flex-align-center"}>Suas Fichas</h3>
+      <div className={styles.flexColumn}>
+        <h3 className={cx(styles.h3, styles.flexAlignCenter)}>Suas Fichas</h3>
         <PJSheetList pjs={["estes", "estes", "estes", "estes"]} />
       </div>
     </>
@@ -98,7 +103,7 @@ const PjSheetListHolder = (props) => {
 const PJSheet = (props) => {
   return (
     <>
-      <div className={"VTT-name"}>
+      <div className={styles.VTTname}>
         <ImageHolder size="small" />
         <h2>{props.name}</h2>
       </div>
@@ -108,7 +113,7 @@ const PJSheet = (props) => {
 const PJSheetList = (props) => {
   return (
     <>
-      <ul className={"ul"}>
+      <ul className={styles.ul}>
         {props.pjs.map((pj) => {
           return (
             <li>
@@ -134,7 +139,7 @@ const Header = () => {
 const SessionAcess = () => {
   return (
     <>
-      <div className={"SessionAcess"}>
+      <div className={styles.SessionAcess}>
         <InputSubmit
           handleClick={(value) => {
             console.log(value);
@@ -165,7 +170,7 @@ const SessionList = (props) => {
     "estes",
   ];
   return (
-    <div className={"sessions-grid"}>
+    <div className={styles.sessionsGrid}>
       {sessions.map((session) => {
         return <SessionItem name={session} />;
       })}
@@ -176,8 +181,8 @@ const SessionList = (props) => {
 const SessionItem = (props) => {
   return (
     <>
-      <div className={"flex-column flex-align-center"}>
-        <div id={"session-name"}>{props.name}</div>
+      <div className={cx(styles.flexColumn, styles.flexAlignCenter)}>
+        <div className={styles.sessionName}>{props.name}</div>
         <ImageHolder size={"big"} />
       </div>
     </>
@@ -186,7 +191,7 @@ const SessionItem = (props) => {
 
 export default function Home() {
   return (
-    <div className={"root"}>
+    <div className={styles.root}>
       <div>
         <Header />
       </div>
