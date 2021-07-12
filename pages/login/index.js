@@ -19,11 +19,7 @@ export default function Login() {
         />
         <h2>Bem-vindo ao Beerholders!</h2>
         <h3>Faça login para jogar com seus amigos.</h3>
-        <form
-          className={styles.formulario}
-          action="/userHomePage"
-          method="post"
-        >
+        <form className={styles.formulario} action="/" method="post">
           <div className={styles.campoFormulario}>
             <label>E-mail:</label>
             <input type="email" required />
