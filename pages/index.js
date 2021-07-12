@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./../styles/UserHomePage.module.css";
-import logo from "./../public/beeholder-logo.png";
 
 const InputText = (props) => {
   return (
@@ -46,7 +45,7 @@ const ImageHolder = (props) => {
     <>
       <div className={styles.imageHolder}>
         <img
-          src={"/beeholder-logo.png"}
+          src={"beeholder-logo.png"}
           className={cx(styles.image, styles[props.size])}
         />
       </div>
