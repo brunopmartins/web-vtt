@@ -1,7 +1,15 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import styles from "../../styles/Login.module.css";
 
 export default function Login() {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push("/");
+  };
+
   return (
     <div className={styles.pagina}>
       <Head>
@@ -19,7 +27,7 @@ export default function Login() {
         />
         <h2>Bem-vindo ao Beerholders!</h2>
         <h3>Faça login para jogar com seus amigos.</h3>
-        <form className={styles.formulario} action="/" method="post">
+        <form className={styles.formulario} onSubmit={handleSubmit}>
           <div className={styles.campoFormulario}>
             <label>E-mail:</label>
             <input type="email" required />
