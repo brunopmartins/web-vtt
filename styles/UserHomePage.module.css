@@ -44,7 +44,7 @@
   flex-direction: column;
 }
 
-.image-holder {
+.imageHolder {
   display: flex;
   padding: 0em 1em;
 }
@@ -65,7 +65,7 @@
   width: 3em;
 }
 
-.VTT-name {
+.VTTname {
   display: flex;
   align-items: Center;
 }
@@ -80,16 +80,16 @@
   align-items: Center;
   padding: 1em;
 }
-.profile-acess-div {
+.profileAccessDiv {
   display: flex;
   padding: 1em;
 }
 
-.flex-column {
+.flexColumn {
   display: flex;
   flex-direction: column;
 }
-.flex-align-center {
+.flexAlignCenter {
   align-items: center;
   align-self: center;
 }
@@ -98,13 +98,13 @@
   padding-inline-start: 0px;
 }
 
-.sessions-grid {
+.sessionsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 0.5em;
   grid-row-gap: 1em;
 }
 
-#session-name {
+.sessionName {
   font-size: 2em;
 }
