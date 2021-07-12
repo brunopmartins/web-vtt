@@ -2,7 +2,7 @@
 
 A Virtual Tabletop for the final assignment of Web Development at CEFET-MG.
 
-**Note:** Currently the `/public/vtt-tmp` has all the html/css base/"design".
+**Note:** Currently the `/public/vtt-tmp` has all the html/css base/"design". Those files are accessible in the deployed app, [see an example here](https://vtt-beerholders.netlify.app/vtt-tmp/assets/compendium/compendium.html).
 
 ## Getting Started
 
