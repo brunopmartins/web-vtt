@@ -5,8 +5,7 @@ function calculateScoreModifier(score) {
 
 function updateScoreModifier(att, score) {
     document.querySelectorAll(`.${att}-mod`).forEach(function (input) {
-        let modifier = calculateScoreModifier(score);
-        input.value = modifier;
+        input.value = calculateScoreModifier(score);
     });
 }
 
@@ -72,36 +71,36 @@ document.querySelector('#current-hp-input').value = 44;
 
 // inject bio info
 document.querySelector('#bio-picture img').src = '../images/sheet_bio_img.png';
-document.querySelector('#bio-text textarea').innerHTML = 
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' + 
-    'Vestibulum ultricies sit amet erat eget pulvinar. Vestibulum vel rutrum nibh. ' + 
-    'Nunc euismod gravida dolor ac condimentum. Cras ut vestibulum magna. Donec ' + 
-    'vitae rhoncus nibh. Mauris a rhoncus massa, nec venenatis enim. Suspendisse ' + 
-    'viverra lectus eu blandit placerat. Phasellus diam enim, volutpat nec dui et, ' + 
-    'vulputate elementum mauris. Morbi vitae elit a diam porta pharetra. Duis et odio ' + 
-    'vulputate, porttitor diam a, finibus velit. Donec leo est, dapibus eu aliquam at, ' + 
-    'accumsan ac ante. Donec id justo sit amet nisi pulvinar laoreet. Ut nulla velit, ' + 
-    'tempus tristique consectetur ac, fringilla in orci. Praesent tristique nisi quis ' + 
+document.querySelector('#bio-text textarea').innerHTML =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
+    'Vestibulum ultricies sit amet erat eget pulvinar. Vestibulum vel rutrum nibh. ' +
+    'Nunc euismod gravida dolor ac condimentum. Cras ut vestibulum magna. Donec ' +
+    'vitae rhoncus nibh. Mauris a rhoncus massa, nec venenatis enim. Suspendisse ' +
+    'viverra lectus eu blandit placerat. Phasellus diam enim, volutpat nec dui et, ' +
+    'vulputate elementum mauris. Morbi vitae elit a diam porta pharetra. Duis et odio ' +
+    'vulputate, porttitor diam a, finibus velit. Donec leo est, dapibus eu aliquam at, ' +
+    'accumsan ac ante. Donec id justo sit amet nisi pulvinar laoreet. Ut nulla velit, ' +
+    'tempus tristique consectetur ac, fringilla in orci. Praesent tristique nisi quis ' +
     'quam tincidunt consequat. Sed aliquet felis nec dui sagittis, non hendrerit lectus ornare.';
-document.querySelector('#notes textarea').innerHTML = 
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' + 
-    'Vestibulum ultricies sit amet erat eget pulvinar. Vestibulum vel rutrum nibh. ' + 
-    'Nunc euismod gravida dolor ac condimentum. Cras ut vestibulum magna. Donec ' + 
-    'vitae rhoncus nibh. Mauris a rhoncus massa, nec venenatis enim. Suspendisse ' + 
-    'viverra lectus eu blandit placerat. Phasellus diam enim, volutpat nec dui et, ' + 
-    'vulputate elementum mauris. Morbi vitae elit a diam porta pharetra. Duis et odio ' + 
-    'vulputate, porttitor diam a, finibus velit. Donec leo est, dapibus eu aliquam at, ' + 
-    'accumsan ac ante. Donec id justo sit amet nisi pulvinar laoreet. Ut nulla velit, ' + 
-    'tempus tristique consectetur ac, fringilla in orci. Praesent tristique nisi quis ' + 
+document.querySelector('#notes textarea').innerHTML =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
+    'Vestibulum ultricies sit amet erat eget pulvinar. Vestibulum vel rutrum nibh. ' +
+    'Nunc euismod gravida dolor ac condimentum. Cras ut vestibulum magna. Donec ' +
+    'vitae rhoncus nibh. Mauris a rhoncus massa, nec venenatis enim. Suspendisse ' +
+    'viverra lectus eu blandit placerat. Phasellus diam enim, volutpat nec dui et, ' +
+    'vulputate elementum mauris. Morbi vitae elit a diam porta pharetra. Duis et odio ' +
+    'vulputate, porttitor diam a, finibus velit. Donec leo est, dapibus eu aliquam at, ' +
+    'accumsan ac ante. Donec id justo sit amet nisi pulvinar laoreet. Ut nulla velit, ' +
+    'tempus tristique consectetur ac, fringilla in orci. Praesent tristique nisi quis ' +
     'quam tincidunt consequat. Sed aliquet felis nec dui sagittis, non hendrerit lectus ornare.';
 
 // inject sheet info
 const scores = [
-    {'att': 'str', 'value': 8}, 
-    {'att': 'dex', 'value': 12}, 
-    {'att': 'con', 'value': 15}, 
-    {'att': 'int', 'value': 14}, 
-    {'att': 'wis', 'value': 18}, 
+    {'att': 'str', 'value': 8},
+    {'att': 'dex', 'value': 12},
+    {'att': 'con', 'value': 15},
+    {'att': 'int', 'value': 14},
+    {'att': 'wis', 'value': 18},
     {'att': 'cha', 'value': 12}
 ];
 
