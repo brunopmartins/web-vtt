@@ -1,39 +1,22 @@
 import React, { useState } from "react";
 import cx from "classnames";
-import styles from "./../styles/UserHomePage.module.css";
-import { HexGrid, Layout, Hexagon, GridGenerator } from 'react-hexgrid';
-import AutoSizer from 'react-virtualized-auto-sizer';
+import Colmeia from "../components/colmeia.js"
 
-function Colmeia() {
-    const config = {
-        "layout": { "width": 10, "height": 10, "flat": false, "spacing": 1.053 },
-        "origin": { "x": -60, "y": -30 },
-        "map": "rectangle",
-        "mapProps": [ 7, 5 ]
-    };
-    const layout = config.layout;
-    const size = { x: layout.width, y: layout.height };
-    const hexagons = GridGenerator.rectangle(...config.mapProps);
-    return (
-        <div className={styles.colmeiaIndex}>
-            <AutoSizer>
-                {({height, width}) => {
-                    return (<HexGrid width={width} height={height}>
-                        } <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
-                        {
-                            hexagons.map((hex, i) => (
-                                <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s}>
-                                    Teste
-                                </Hexagon>
-                            ))
-                        }
-                    </Layout>
-                    </HexGrid>)
-                }}
-            </AutoSizer>
-        </div>
-    )
-}
+const CAMPANHAS = [
+    {"id": "123", "name": "Rasimash", "img": "./beeholder-logo.png"},
+    {"id": "124", "name": "Subversão", "img": "/beeholder-logo.png"},
+    {"id": "125", "name": "Eberrão", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+
+];
+
+import styles from "../styles/UserHomePage.module.css";
 
 const InputText = (props) => {
     return (
@@ -201,7 +184,7 @@ export default function Home() {
                 <UserProfileAcess />
             </div>
             <div>
-                <Colmeia />
+                <Colmeia objects={CAMPANHAS} scale={60} n_cols={5}/>
             </div>
             <div>
                 <PjSheetListHolder />

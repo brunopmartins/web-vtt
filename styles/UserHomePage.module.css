@@ -107,8 +107,9 @@
   font-size: 2em;
 }
 
-.colmeiaIndex {
+.colmeia {
   margin: 2em;
+  padding: 2em;
   height: 800px;
   border-radius: 5%;
   background-color: var(--cor-dos-frames);
