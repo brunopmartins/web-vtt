@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import Colmeia from "../components/colmeia.js"
+import Link from 'next/link'
 
 const CAMPANHAS = [
     {"id": "123", "name": "Rasimash", "src": "./beeholder-logo.png", "type": "img"},
@@ -93,14 +94,11 @@ const UserProfileAcess = () => {
                 >
                     User Options
                 </button>
-                <button
-                    className={cx(styles.button, styles.buttonFit)}
-                    onClick={() => {
-                        window.location.href = "http://localhost:3000/compendium";
-                    }}
-                >
-                    Compendium
-                </button>
+                <Link href="/compendium">
+                    <button className={cx(styles.button, styles.buttonFit)}>
+                        Compendium
+                    </button>
+                </Link>
             </div>
         </>
     );
