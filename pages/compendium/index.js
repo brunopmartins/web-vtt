@@ -40,7 +40,7 @@ const listaCompendioStyle = css`
 
 export default function Compendium() {
   const { isLoading, error, data } = useSpellListQuery();
-  const spellList = data.results;
+  const spellList = data?.results;
   return (
     <div css={compendiumStyle}>
       <Head>
@@ -61,7 +61,7 @@ export default function Compendium() {
         </div>
         <div css={listaCompendioStyle}>
           <ul>
-            {spellList.map((spell) => (
+            {spellList?.map((spell) => (
                 <a href={"https://www.dnd5eapi.co" + spell.url} target="_blank"> <li>{spell.name}</li> </a>
             ))}
           </ul>

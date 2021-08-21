@@ -75,7 +75,7 @@ const VTTName = () => {
         <>
             <div className={styles.VTTname}>
                 <ImageHolder size="medium" />
-                <h3 className={styles.h3}>Beer Holder VTT</h3>
+                <h3 className={styles.h3}>BeeHolder</h3>
             </div>
         </>
     );
@@ -96,7 +96,7 @@ const UserProfileAcess = () => {
                 <button
                     className={cx(styles.button, styles.buttonFit)}
                     onClick={() => {
-                        console.log("hehe");
+                        window.location.href = "http://localhost:3000/compendium";
                     }}
                 >
                     Compendium
@@ -111,7 +111,7 @@ const PjSheetListHolder = (props) => {
         <>
             <div className={styles.flexColumn}>
                 <h3 className={cx(styles.h3, styles.flexAlignCenter)}>Suas Fichas</h3>
-                <PJSheetList pjs={["estes", "estes", "estes", "estes"]} />
+                <PJSheetList pjs={["Aratosh", "Praestes Solis", "Dareon Silvermane", "Quiabo Surdo"]} />
             </div>
         </>
     );
