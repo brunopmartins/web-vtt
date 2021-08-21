@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useSpellQuery } from "../../components/queries/useSpellQuery";
+import { useSpellListQuery } from "../../components/queries/useSpellListQuery";
 import { css } from "@emotion/react"
 import Colmeia from "../../components/colmeia";
 import { faMagic, faDragon, faHatWizard, faUsers, faRing, faPortrait, faSkullCrossbones, faBible, faAward, faFeather } from '@fortawesome/free-solid-svg-icons'
@@ -39,7 +39,8 @@ const listaCompendioStyle = css`
 `;
 
 export default function Compendium() {
-  const { isLoading, error, data } = useSpellQuery("produce-flame");
+  const { isLoading, error, data } = useSpellListQuery();
+  const spellList = data.results;
   return (
     <div css={compendiumStyle}>
       <Head>
@@ -54,23 +55,15 @@ export default function Compendium() {
           src="/beeholder-logo.png"
           alt="Ícone com a ilustração de um beholder amarelo e preto (cores de abelha)"
         />
-        <h1>Câmara do conhecimento.</h1>
+        <h1>Câmara do conhecimento</h1>
         <div id="selecao-compendio">
-          {/* TODO: transformar colmeia em componente */}
           <Colmeia objects={COMPENDIUM_ITEMS} scale={20}/>
         </div>
         <div css={listaCompendioStyle}>
           <ul>
-            <li>Wish</li>
-            <li>Produce Flame</li>
-            <li>Cure Wounds</li>
-            <li>Healing Word</li>
-            <li>Meld Into Stone</li>
-            <li>Polymorph</li>
-            <li>Speak With Plants</li>
-            <li>Plant Growth</li>
-            <li>Beast Bond</li>
-            <li>Charm Person</li>
+            {spellList.map((spell) => (
+                <a href={"https://www.dnd5eapi.co" + spell.url} target="_blank"> <li>{spell.name}</li> </a>
+            ))}
           </ul>
         </div>
       </div>
