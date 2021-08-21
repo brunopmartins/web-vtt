@@ -61,16 +61,6 @@ export default function Compendium() {
         <div id="selecao-compendio">
           {/* TODO: transformar colmeia em componente */}
           <Colmeia objects={COMPENDIUM_ITEMS} scale={20}/>
-          <div className="colmeia">
-            {COMPENDIUM_ITEMS.map((itemName) => (
-              <div key={itemName} className="hex-cell">
-                <div>
-                  {/* TODO: Substituir as imagens pelos ícones */}
-                  <img src="/beeholder-logo.png" layout="fill" alt={itemName} />
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
         <div css={listaCompendioStyle}>
           <ul>

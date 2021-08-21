@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import '../styles/colmeia.css'
 import '../styles/home.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 

@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./../styles/UserHomePage.module.css";
 import { css } from "@emotion/react"
 
-const colmeiaStyle = (scale, n_cols) => css`
+const colmeiaStyle = (scale, n_cols, n_rows) => css`
     --escala: calc(${scale}vw/${n_cols*2});
     --altura: calc(0.5*var(--escala));
     --largura: calc(.5*1.73205*var(--escala));
     box-sizing: border-box;
     display: grid;
     place-content: center;
-    grid-template: repeat(var(--n-rows), var(--escala))/repeat(${n_cols*2+1}, var(--largura));
+    grid-template: repeat(${n_rows}, var(--escala))/repeat(${n_cols*2+1}, var(--largura));
     grid-gap: var(--altura) 0;
     overflow: hidden;
     margin: 0;
@@ -43,9 +43,9 @@ export default function Colmeia(props) {
     const objects = props.objects;
     const scale = props.scale ? props.scale : 20;
     const n_cols = props.n_cols ? props.n_cols : 5;
-
+    const n_rows = Math.ceil(objects.length / n_cols)
     return (
-        <div css={colmeiaStyle(scale, n_cols)}>
+        <div css={colmeiaStyle(scale, n_cols, n_rows)}>
             {objects.map((item) => (
                 <div key={item.id} css={hexCellStyle(n_cols)}>
                     <div css={hexCellContentStyle}>
