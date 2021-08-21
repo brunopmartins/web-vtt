@@ -1,17 +1,21 @@
 import Head from "next/head";
 import { useSpellQuery } from "../../components/queries/useSpellQuery";
+import { css } from "@emotion/react"
+import Colmeia from "../../components/colmeia";
+
 
 const COMPENDIUM_ITEMS = [
-  "Spells",
-  "Monsters",
-  "Classes",
-  "Races",
-  "Items",
-  "Backgrounds",
-  "Conditions",
-  "Deities",
-  "Feats",
-  "Languages",
+    {"id": "123", "name": "Spells", "img": "./beeholder-logo.png"},
+    {"id": "124", "name": "Monsters", "img": "/beeholder-logo.png"},
+    {"id": "125", "name": "Classes", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Races", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Items", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Backgrounds", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Conditions", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Deities", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Feats", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Languages", "img": "/beeholder-logo.png"},
+
 ];
 
 const compendiumStyle = css`
@@ -40,14 +44,14 @@ export default function Compendium() {
   const { isLoading, error, data } = useSpellQuery("produce-flame");
   console.log(data);
   return (
-    <div className={compendiumStyle}>
+    <div css={compendiumStyle}>
       <Head>
         <title>Compêndio</title>
         <link rel="icon" href="/beeholder-logo.png" />
       </Head>
-      <div className={painelLateralStyle}>
+      <div css={painelLateralStyle}>
         <img
-          css={{ width: "100%" }}
+          css={{ width: 100 }}
           width={100}
           height={100}
           src="/beeholder-logo.png"
@@ -56,6 +60,7 @@ export default function Compendium() {
         <h1>Câmara do conhecimento.</h1>
         <div id="selecao-compendio">
           {/* TODO: transformar colmeia em componente */}
+          <Colmeia objects={COMPENDIUM_ITEMS} scale={20}/>
           <div className="colmeia">
             {COMPENDIUM_ITEMS.map((itemName) => (
               <div key={itemName} className="hex-cell">
@@ -67,7 +72,7 @@ export default function Compendium() {
             ))}
           </div>
         </div>
-        <div className={listaCompendioStyle}>
+        <div css={listaCompendioStyle}>
           <ul>
             <li>Wish</li>
             <li>Produce Flame</li>

@@ -183,8 +183,8 @@ export default function Home() {
             <div>
                 <UserProfileAcess />
             </div>
-            <div>
-                <Colmeia objects={CAMPANHAS} scale={60} n_cols={5}/>
+            <div className={styles.colmeia}>
+                <Colmeia objects={CAMPANHAS} scale={60} n_cols={5} n_rows={2}/>
             </div>
             <div>
                 <PjSheetListHolder />
