@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../../styles/Compendium.module.css";
+import { css } from "@emotion/react";
 
 const COMPENDIUM_ITEMS = [
   "Spells",
@@ -14,16 +14,38 @@ const COMPENDIUM_ITEMS = [
   "Languages",
 ];
 
+const compendiumStyle = css`
+  display: grid;
+  grid-template-columns: auto 400px;
+  grid-template-rows: 100vh;
+`;
+
+const painelLateralStyle = css`
+  padding: 0;
+  margin: 0;
+  grid-column: 2;
+  place-content: center;
+  text-align: center;
+  background-color: var(--cor-dos-frames);
+`;
+
+const listaCompendioStyle = css`
+  display: flex;
+  background-color: var(--cor-dos-frames);
+  margin: 1em;
+  text-align: justify;
+`;
+
 export default function Compendium() {
   return (
-    <div className={styles.compendio}>
+    <div css={compendiumStyle}>
       <Head>
         <title>Compêndio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.painelLateral}>
+      <div css={painelLateralStyle}>
         <img
-          className={styles.logo}
+          css={{ width: "100%" }}
           width={100}
           height={100}
           src="/beeholder-logo.png"
@@ -43,7 +65,7 @@ export default function Compendium() {
             ))}
           </div>
         </div>
-        <div className={styles.listaCompendio}>
+        <div css={listaCompendioStyle}>
           <ul>
             <li>Wish</li>
             <li>Produce Flame</li>
