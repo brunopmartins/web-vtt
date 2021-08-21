@@ -2,21 +2,21 @@ import React from "react";
 import styles from "./../styles/UserHomePage.module.css";
 import { css } from "@emotion/react"
 
-const colmeiaStyle = scale => css`
-    --escala: calc(${scale}vw/var(--n-cols));
+const colmeiaStyle = (scale, n_cols) => css`
+    --escala: calc(${scale}vw/${n_cols*2});
     --altura: calc(0.5*var(--escala));
     --largura: calc(.5*1.73205*var(--escala));
     box-sizing: border-box;
     display: grid;
     place-content: center;
-    grid-template: repeat(var(--n-rows), var(--escala))/repeat(var(--n-cols), var(--largura));
+    grid-template: repeat(var(--n-rows), var(--escala))/repeat(${n_cols*2+1}, var(--largura));
     grid-gap: var(--altura) 0;
     overflow: hidden;
     margin: 0;
     padding: var(--altura) 0;
 `
 const hexCellStyle = n_cols => css`
-    &:nth-of-type(${n_cols*2-1}n+${n_cols+1}) {grid-column-start: 2}
+    &:nth-of-type(${n_cols*2}n+${n_cols+1}) {grid-column-start: 2}
     overflow: hidden;
     grid-column-end: span 2;
     margin: calc(-1*var(--altura)) 0;
@@ -45,7 +45,7 @@ export default function Colmeia(props) {
     const n_cols = props.n_cols ? props.n_cols : 5;
 
     return (
-        <div css={colmeiaStyle(scale)}>
+        <div css={colmeiaStyle(scale, n_cols)}>
             {objects.map((item) => (
                 <div key={item.id} css={hexCellStyle(n_cols)}>
                     <div css={hexCellContentStyle}>

@@ -13,6 +13,30 @@ const CAMPANHAS = [
     {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
     {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
     {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "123", "name": "Rasimash", "img": "./beeholder-logo.png"},
+    {"id": "124", "name": "Subversão", "img": "/beeholder-logo.png"},
+    {"id": "125", "name": "Eberrão", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
 
 ];
 
@@ -184,7 +208,7 @@ export default function Home() {
                 <UserProfileAcess />
             </div>
             <div className={styles.colmeia}>
-                <Colmeia objects={CAMPANHAS} scale={60} n_cols={5} n_rows={2}/>
+                <Colmeia objects={CAMPANHAS} scale={60} n_cols={5} n_rows={10}/>
             </div>
             <div>
                 <PjSheetListHolder />
