@@ -3,40 +3,18 @@ import cx from "classnames";
 import Colmeia from "../components/colmeia.js"
 
 const CAMPANHAS = [
-    {"id": "123", "name": "Rasimash", "img": "./beeholder-logo.png"},
-    {"id": "124", "name": "Subversão", "img": "/beeholder-logo.png"},
-    {"id": "125", "name": "Eberrão", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "123", "name": "Rasimash", "img": "./beeholder-logo.png"},
-    {"id": "124", "name": "Subversão", "img": "/beeholder-logo.png"},
-    {"id": "125", "name": "Eberrão", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Phandelver", "img": "/beeholder-logo.png"},
+    {"id": "123", "name": "Rasimash", "src": "./beeholder-logo.png", "type": "img"},
+    {"id": "124", "name": "Subversão", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "125", "name": "Eberrão", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
+
 
 ];
 
@@ -208,7 +186,7 @@ export default function Home() {
                 <UserProfileAcess />
             </div>
             <div className={styles.colmeia}>
-                <Colmeia objects={CAMPANHAS} scale={60} n_cols={5} n_rows={10}/>
+                <Colmeia objects={CAMPANHAS} scale={80} n_cols={4} n_rows={10}/>
             </div>
             <div>
                 <PjSheetListHolder />

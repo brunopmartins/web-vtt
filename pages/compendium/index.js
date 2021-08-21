@@ -2,20 +2,18 @@ import Head from "next/head";
 import { useSpellQuery } from "../../components/queries/useSpellQuery";
 import { css } from "@emotion/react"
 import Colmeia from "../../components/colmeia";
-
-
+import { faMagic, faDragon, faHatWizard, faUsers, faRing, faPortrait, faSkullCrossbones, faBible, faAward, faFeather } from '@fortawesome/free-solid-svg-icons'
 const COMPENDIUM_ITEMS = [
-    {"id": "123", "name": "Spells", "img": "./beeholder-logo.png"},
-    {"id": "124", "name": "Monsters", "img": "/beeholder-logo.png"},
-    {"id": "125", "name": "Classes", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Races", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Items", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Backgrounds", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Conditions", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Deities", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Feats", "img": "/beeholder-logo.png"},
-    {"id": "126", "name": "Languages", "img": "/beeholder-logo.png"},
-
+    {"id": "1", "name": "Spells", "src": faMagic, "type": "icon"},
+    {"id": "2", "name": "Monsters", "src": faDragon, "type": "icon"},
+    {"id": "3", "name": "Classes", "src": faHatWizard, "type": "icon"},
+    {"id": "4", "name": "Races", "src": faUsers, "type": "icon"},
+    {"id": "5", "name": "Items", "src": faRing, "type": "icon"},
+    {"id": "6", "name": "Backgrounds", "src": faPortrait, "type": "icon"},
+    {"id": "7", "name": "Conditions", "src": faSkullCrossbones, "type": "icon"},
+    {"id": "8", "name": "Deities", "src": faBible, "type": "icon"},
+    {"id": "9", "name": "Feats", "src": faAward, "type": "icon"},
+    {"id": "10", "name": "Languages", "src": faFeather, "type": "icon"},
 ];
 
 const compendiumStyle = css`
@@ -42,7 +40,6 @@ const listaCompendioStyle = css`
 
 export default function Compendium() {
   const { isLoading, error, data } = useSpellQuery("produce-flame");
-  console.log(data);
   return (
     <div css={compendiumStyle}>
       <Head>

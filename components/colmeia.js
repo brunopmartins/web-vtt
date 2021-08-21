@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./../styles/UserHomePage.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { css } from "@emotion/react"
 
 const colmeiaStyle = (scale, n_cols, n_rows) => css`
@@ -34,26 +34,43 @@ const hexCellContentStyle = css`
     background-color: var(--cor-dos-titulos);
     color: var(--cor-do-background);
     &:hover {--altura: 0.1;}
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--escala);
 `
+const hexCellIconStyle = css`
+    height: var(--escala);
+    display: block;
+    margin: auto;
+`
+function ColmeiaContent(props) {
+    if (props.type === "img") {
+        return (
+            <img layout="fill" src={props.src} alt={props.name} css={hexCellContentStyle}/>
+        )
+    }
+    else if (props.type === "icon") {
+        return (
+            <FontAwesomeIcon icon={props.src} css={[hexCellContentStyle, hexCellIconStyle]}/>
+        )
+    }
+    return (
+        <img layout="fill" src={"./beeholder-logo.png"} css={hexCellContentStyle}/>
+    )
+
+}
+
 export default function Colmeia(props) {
     const objects = props.objects;
     const scale = props.scale ? props.scale : 20;
     const n_cols = props.n_cols ? props.n_cols : 5;
-    const n_rows = Math.ceil(objects.length / n_cols)
+    const n_rows = Math.ceil(objects.length / n_cols);
     return (
         <div css={colmeiaStyle(scale, n_cols, n_rows)}>
             {objects.map((item) => (
                 <div key={item.id} css={hexCellStyle(n_cols)}>
                     <div css={hexCellContentStyle}>
-                        <img layout="fill" src={item.img}  alt={item.name} css={hexCellContentStyle}/>
+                        <ColmeiaContent type={item.type} src={item.src} alt={item.name}/>
                     </div>
                 </div>
             ))}
         </div>
     )
 }
-
