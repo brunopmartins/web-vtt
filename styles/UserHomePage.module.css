@@ -1,7 +1,7 @@
 .root {
   display: grid;
   grid-template-columns: 7fr 2fr;
-  grid-template-rows: 2fr 7fr;
+  grid-template-rows: 1fr 7fr;
   height: 100%;
   width: 100%;
 }
@@ -22,7 +22,6 @@
 .basicdiv {
   border: solid;
 }
-
 .inputText {
   height: 2.5em;
   width: 20em;
@@ -43,10 +42,9 @@
   display: flex;
   flex-direction: column;
 }
-
 .imageHolder {
   display: flex;
-  padding: 0em 1em;
+  padding: 0 1em;
 }
 .image {
   /* background-color: red; */
@@ -58,11 +56,11 @@
 
 .medium {
   height: 3em;
-  width: 4em;
+  width: 3em;
 }
 .small {
   height: 2em;
-  width: 3em;
+  width: 2em;
 }
 
 .VTTname {
@@ -95,7 +93,7 @@
 }
 .ul {
   list-style-type: none;
-  padding-inline-start: 0px;
+  padding-inline-start: 0;
 }
 
 .sessionsGrid {
@@ -107,4 +105,12 @@
 
 .sessionName {
   font-size: 2em;
+}
+
+.colmeia {
+  margin: 2em;
+  padding: 2em;
+  height: 800px;
+  border-radius: 5%;
+  background-color: var(--cor-dos-frames);
 }
