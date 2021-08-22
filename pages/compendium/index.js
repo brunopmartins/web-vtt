@@ -29,6 +29,7 @@ const painelLateralStyle = css`
   place-content: center;
   text-align: center;
   background-color: var(--cor-dos-frames);
+  height: 100vh;
 `;
 
 const listaCompendioStyle = css`
@@ -36,6 +37,8 @@ const listaCompendioStyle = css`
   background-color: var(--cor-dos-frames);
   margin: 1em;
   text-align: justify;
+  overflow-y: scroll;
+  height: 60vh;
 `;
 
 export default function Compendium() {
