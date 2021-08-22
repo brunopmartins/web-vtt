@@ -45,14 +45,14 @@ export default function Compendium() {
     <div css={compendiumStyle}>
       <Head>
         <title>Compêndio</title>
-        <link rel="icon" href="/beeholder-logo.png" />
+        <link rel="icon" href="/img/beeholder-logo.png" />
       </Head>
       <div css={painelLateralStyle}>
         <img
           css={{ width: 100 }}
           width={100}
           height={100}
-          src="/beeholder-logo.png"
+          src="/img/beeholder-logo.png"
           alt="Ícone com a ilustração de um beholder amarelo e preto (cores de abelha)"
         />
         <h1>Câmara do conhecimento</h1>
