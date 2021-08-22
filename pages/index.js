@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cx from "classnames";
 import Colmeia from "../components/colmeia.js"
 import Link from 'next/link'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const CAMPANHAS = [
     {"id": "123", "name": "Rasimash", "src": "./img/RasimashWpp.jpg", "type": "img"},
@@ -9,12 +10,7 @@ const CAMPANHAS = [
     {"id": "125", "name": "Eberrão", "src": "/img/EberronParty.jpg", "type": "img"},
     {"id": "126", "name": "Phandelver", "src": "/img/Phandelver.jpg", "type": "img"},
     {"id": "127", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
-    {"id": "128", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
-    {"id": "129", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
-    {"id": "130", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
-    {"id": "131", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
-    {"id": "132", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
-    {"id": "133", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
+    {"id": "0", "name": "Adicionar", "src": faPlus, "type": "icon"},
 ];
 
 import styles from "../styles/UserHomePage.module.css";
