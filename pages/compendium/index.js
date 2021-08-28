@@ -1,60 +1,69 @@
 import Head from "next/head";
-import styles from "../../styles/Compendium.module.css";
-
+import { useSpellListQuery } from "../../components/queries/useSpellListQuery";
+import { css } from "@emotion/react"
+import Colmeia from "../../components/colmeia";
+import { faMagic, faDragon, faHatWizard, faUsers, faRing, faPortrait, faSkullCrossbones, faBible, faAward, faFeather } from '@fortawesome/free-solid-svg-icons'
 const COMPENDIUM_ITEMS = [
-  "Spells",
-  "Monsters",
-  "Classes",
-  "Races",
-  "Items",
-  "Backgrounds",
-  "Conditions",
-  "Deities",
-  "Feats",
-  "Languages",
+    {"id": "1", "name": "Spells", "src": faMagic, "type": "icon"},
+    {"id": "2", "name": "Monsters", "src": faDragon, "type": "icon"},
+    {"id": "3", "name": "Classes", "src": faHatWizard, "type": "icon"},
+    {"id": "4", "name": "Races", "src": faUsers, "type": "icon"},
+    {"id": "5", "name": "Items", "src": faRing, "type": "icon"},
+    {"id": "6", "name": "Backgrounds", "src": faPortrait, "type": "icon"},
+    {"id": "7", "name": "Conditions", "src": faSkullCrossbones, "type": "icon"},
+    {"id": "8", "name": "Deities", "src": faBible, "type": "icon"},
+    {"id": "9", "name": "Feats", "src": faAward, "type": "icon"},
+    {"id": "10", "name": "Languages", "src": faFeather, "type": "icon"},
 ];
 
+const compendiumStyle = css`
+  display: grid;
+  grid-template-columns: auto 400px;
+  grid-template-rows: 100vh;
+`;
+
+const painelLateralStyle = css`
+  padding: 0;
+  margin: 0;
+  grid-column: 2;
+  place-content: center;
+  text-align: center;
+  background-color: var(--cor-dos-frames);
+`;
+
+const listaCompendioStyle = css`
+  display: flex;
+  background-color: var(--cor-dos-frames);
+  margin: 1em;
+  text-align: justify;
+`;
+
 export default function Compendium() {
+  const { isLoading, error, data } = useSpellListQuery();
+  const spellList = data?.results;
   return (
-    <div className={styles.compendio}>
+    <div css={compendiumStyle}>
       <Head>
         <title>Compêndio</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/beeholder-logo.png" />
       </Head>
-      <div className={styles.painelLateral}>
+      <div css={painelLateralStyle}>
         <img
-          className={styles.logo}
+          css={{ width: 100 }}
           width={100}
           height={100}
           src="/beeholder-logo.png"
           alt="Ícone com a ilustração de um beholder amarelo e preto (cores de abelha)"
         />
-        <h1>Câmara do conhecimento.</h1>
+        <h1>Câmara do conhecimento</h1>
         <div id="selecao-compendio">
-          {/* TODO: transformar colmeia em componente */}
-          <div className="colmeia">
-            {COMPENDIUM_ITEMS.map((itemName) => (
-              <div key={itemName} className="hex-cell">
-                <div>
-                  {/* TODO: Substituir as imagens pelos ícones */}
-                  <img src="/beeholder-logo.png" layout="fill" alt={itemName} />
-                </div>
-              </div>
-            ))}
-          </div>
+          <Colmeia objects={COMPENDIUM_ITEMS} scale={20}/>
         </div>
-        <div className={styles.listaCompendio}>
+        <div css={listaCompendioStyle}>
           <ul>
-            <li>Wish</li>
-            <li>Produce Flame</li>
-            <li>Cure Wounds</li>
-            <li>Healing Word</li>
-            <li>Meld Into Stone</li>
-            <li>Polymorph</li>
-            <li>Speak With Plants</li>
-            <li>Plant Growth</li>
-            <li>Beast Bond</li>
-            <li>Charm Person</li>
+            {spellList?.map((spell) => (
+                <a href={"https://www.dnd5eapi.co" + spell.url} target="_blank"> <li>{spell.name}</li> </a>
+            ))}
           </ul>
         </div>
       </div>
