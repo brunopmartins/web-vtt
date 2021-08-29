@@ -47,8 +47,8 @@
   padding: 0 1em;
 }
 .medium {
-  height: 3em;
-  width: 3em;
+  height: 5em;
+  width: 5em;
 }
 .small {
   height: 2em;
@@ -104,4 +104,15 @@
   height: 800px;
   border-radius: 5%;
   background-color: var(--cor-dos-frames);
+}
+
+.hexagon {
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-transform: rotate(120deg);
+     -moz-transform: rotate(120deg);
+      -ms-transform: rotate(120deg);
+       -o-transform: rotate(120deg);
+          transform: rotate(120deg);
+  cursor: pointer;
 }

@@ -58,8 +58,8 @@ const ImageHolder = (props) => {
         <>
             <div className={styles.imageHolder}>
                 <img
-                    src={"img/beeholder-logo.png"}
-                    className={cx(styles.image, styles[props.size])}
+                    src={props.src}
+                    className={cx(styles.image, styles[props.size], styles[props.format])}
                 />
             </div>
         </>
@@ -69,7 +69,7 @@ const VTTName = () => {
     return (
         <>
             <div className={styles.VTTname}>
-                <ImageHolder size="medium" />
+                <ImageHolder size="medium" src={"img/beeholder-logo.png"}/>
                 <h3 className={styles.h3}>BeeHolder</h3>
             </div>
         </>
@@ -79,7 +79,7 @@ const UserProfileAcess = () => {
     return (
         <>
             <div className={cx(styles.profileAccessDiv, styles.flexAlignCenter)}>
-                <ImageHolder size="small" />
+                <ImageHolder size="small" src={"img/beeholder-logo.png"} format="hexagon"/>
                 <button
                     className={cx(styles.button, styles.buttonFit)}
                     onClick={() => {
@@ -103,7 +103,11 @@ const PjSheetListHolder = (props) => {
         <>
             <div className={styles.flexColumn}>
                 <h3 className={cx(styles.h3, styles.flexAlignCenter)}>Suas Fichas</h3>
-                <PJSheetList pjs={["Aratosh", "Praestes Solis", "Dareon Silvermane", "Quiabo Surdo"]} />
+                <PJSheetList pjs={[
+                    {name: "Aratosh", img: "img/Aratosh.png"},
+                    {name: "Praestes Solis", img: "img/Praestes.png"},
+                    {name: "Dareon Silvermane", img: "img/Dareon.png"},
+                    {name: "Uya", img: "img/Uya.png"}]} />
             </div>
         </>
     );
@@ -113,7 +117,7 @@ const PJSheet = (props) => {
     return (
         <>
             <div className={styles.VTTname}>
-                <ImageHolder size="small" />
+                <ImageHolder size="small" src={props.src}/>
                 <h2>{props.name}</h2>
             </div>
         </>
@@ -126,7 +130,7 @@ const PJSheetList = (props) => {
                 {props.pjs.map((pj) => {
                     return (
                         <li>
-                            <PJSheet name={pj} />
+                            <PJSheet name={pj.name} src={pj.img}/>
                         </li>
                     );
                 })}
