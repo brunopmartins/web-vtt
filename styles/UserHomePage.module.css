@@ -1,7 +1,7 @@
 .root {
   display: grid;
   grid-template-columns: 8fr 2fr;
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: 1fr 1fr;
   height: 100%;
   width: 100%;
 }
@@ -38,10 +38,6 @@
   margin: 0.3em;
   width: min-content;
 }
-.SessionAcess {
-  display: flex;
-  flex-direction: column;
-}
 .imageHolder {
   display: flex;
   padding: 0 1em;
@@ -61,19 +57,16 @@
 .h3 {
   font-size: 2em;
 }
-
 .header {
   display: flex;
   justify-content: space-between;
   align-self: center;
   align-items: Center;
-  padding: 1em;
 }
 .profileAccessDiv {
   display: flex;
   padding: 1em;
 }
-
 .flexColumn {
   display: flex;
   flex-direction: column;
@@ -86,26 +79,25 @@
   list-style-type: none;
   padding-inline-start: 0;
 }
-
 .sessionsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 0.5em;
   grid-row-gap: 1em;
 }
-
 .sessionName {
   font-size: 2em;
 }
-
 .colmeia {
-  margin: 2em;
+  margin: 0.5em 2em 2em;
   padding: 2em;
   height: 800px;
   border-radius: 5%;
   background-color: var(--cor-dos-frames);
 }
-
+.listHolder {
+  overflow-y: scroll;
+}
 .hexagon {
   overflow: hidden;
   visibility: hidden;

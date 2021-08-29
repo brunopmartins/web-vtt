@@ -3,7 +3,6 @@ import cx from "classnames";
 import Colmeia from "../components/colmeia.js"
 import Link from 'next/link'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
 const CAMPANHAS = [
     {"id": "123", "name": "Rasimash", "src": "./img/RasimashWpp.jpg", "type": "img"},
     {"id": "124", "name": "Subversão", "src": "/img/SubersãoIcon.jpg", "type": "img"},
@@ -12,7 +11,6 @@ const CAMPANHAS = [
     {"id": "127", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
     {"id": "0", "name": "Adicionar", "src": faPlus, "type": "icon"},
 ];
-
 import styles from "../styles/UserHomePage.module.css";
 
 const InputText = (props) => {
@@ -24,32 +22,6 @@ const InputText = (props) => {
                 value={props.value}
                 onChange={props.handleChange}
             />
-        </>
-    );
-};
-
-const InputSubmit = (props) => {
-    const [input, setInput] = useState("");
-    const handleChange = (event) => {
-        setInput(event.target.value);
-    };
-    return (
-        <>
-            <div className={styles.InputSubmit}>
-                <InputText
-                    value={input}
-                    placeholder={props.placeholder}
-                    handleChange={handleChange}
-                />
-                <button
-                    className={cx(styles.button, styles.buttonfixedSize)}
-                    onClick={() => {
-                        props.handleClick(input);
-                    }}
-                >
-                    {props.buttonText}
-                </button>
-            </div>
         </>
     );
 };
@@ -97,7 +69,6 @@ const UserProfileAcess = () => {
         </>
     );
 };
-
 const PjSheetListHolder = (props) => {
     return (
         <>
@@ -107,12 +78,12 @@ const PjSheetListHolder = (props) => {
                     {name: "Aratosh", img: "img/Aratosh.png"},
                     {name: "Praestes Solis", img: "img/Praestes.png"},
                     {name: "Dareon Silvermane", img: "img/Dareon.png"},
-                    {name: "Uya", img: "img/Uya.png"}]} />
+                    {name: "Uya", img: "img/Uya.png"},
+                ]} />
             </div>
         </>
     );
 };
-
 const PJSheet = (props) => {
     return (
         <>
@@ -143,35 +114,10 @@ const Header = () => {
         <>
             <div className="header">
                 <VTTName />
-                <SessionAcess />
             </div>
         </>
     );
 };
-
-const SessionAcess = () => {
-    return (
-        <>
-            <div className={styles.SessionAcess}>
-                <InputSubmit
-                    handleClick={(value) => {
-                        console.log(value);
-                    }}
-                    placeholder="Nome da sala"
-                    buttonText={"Criar sala"}
-                />
-                <InputSubmit
-                    handleClick={(value) => {
-                        console.log(value);
-                    }}
-                    placeholder="ID da sala"
-                    buttonText={"Acessar Sala"}
-                />
-            </div>
-        </>
-    );
-};
-
 export default function Home() {
     return (
         <div className={styles.root}>
@@ -185,7 +131,7 @@ export default function Home() {
                 <Colmeia objects={CAMPANHAS} scale={70} n_cols={4} n_rows={10}/>
             </div>
             <div>
-                <PjSheetListHolder />
+                <PjSheetListHolder className={styles.listHolder}/>
             </div>
         </div>
     );
