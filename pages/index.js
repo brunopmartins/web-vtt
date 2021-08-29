@@ -2,21 +2,15 @@ import React, { useState } from "react";
 import cx from "classnames";
 import Colmeia from "../components/colmeia.js"
 import Link from 'next/link'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const CAMPANHAS = [
-    {"id": "123", "name": "Rasimash", "src": "./beeholder-logo.png", "type": "img"},
-    {"id": "124", "name": "Subversão", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "125", "name": "Eberrão", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-    {"id": "126", "name": "Phandelver", "src": "/beeholder-logo.png", "type": "img"},
-
-
+    {"id": "123", "name": "Rasimash", "src": "./img/RasimashWpp.jpg", "type": "img"},
+    {"id": "124", "name": "Subversão", "src": "/img/SubersãoIcon.jpg", "type": "img"},
+    {"id": "125", "name": "Eberrão", "src": "/img/EberronParty.jpg", "type": "img"},
+    {"id": "126", "name": "Phandelver", "src": "/img/Phandelver.jpg", "type": "img"},
+    {"id": "127", "name": "Teste", "src": "/img/beeholder-logo.png", "type": "img"},
+    {"id": "0", "name": "Adicionar", "src": faPlus, "type": "icon"},
 ];
 
 import styles from "../styles/UserHomePage.module.css";
@@ -64,7 +58,7 @@ const ImageHolder = (props) => {
         <>
             <div className={styles.imageHolder}>
                 <img
-                    src={"beeholder-logo.png"}
+                    src={"img/beeholder-logo.png"}
                     className={cx(styles.image, styles[props.size])}
                 />
             </div>
@@ -184,7 +178,7 @@ export default function Home() {
                 <UserProfileAcess />
             </div>
             <div className={styles.colmeia}>
-                <Colmeia objects={CAMPANHAS} scale={80} n_cols={4} n_rows={10}/>
+                <Colmeia objects={CAMPANHAS} scale={70} n_cols={4} n_rows={10}/>
             </div>
             <div>
                 <PjSheetListHolder />
