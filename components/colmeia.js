@@ -83,7 +83,7 @@ export default function Colmeia(props) {
     <div css={colmeiaStyle(scale, n_cols, n_rows)}>
       {objects.map((item) => {
         const colmeiaNode = (
-          <a key={item.id} css={hexCellStyle(n_cols)}>
+          <a key={item.id} css={hexCellStyle(n_cols)} onClick={item.onClick}>
             <div css={hexCellContentStyle}>
               <ColmeiaContent type={item.type} src={item.src} alt={item.name} />
             </div>

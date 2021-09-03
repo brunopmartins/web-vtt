@@ -1,5 +1,17 @@
-import React from "react";
-import { Button, List, Space, Layout, Menu, Row, Col } from "antd";
+import React, { useState } from "react";
+import {
+  Button,
+  List,
+  Modal,
+  Layout,
+  Menu,
+  Row,
+  Col,
+  Form,
+  Input,
+  Typography,
+  InputNumber,
+} from "antd";
 import { ReadOutlined, UserOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import Colmeia from "../components/colmeia";
@@ -16,7 +28,6 @@ const CAMPANHAS = [
   { id: "125", name: "Eberrão", src: "/img/EberronParty.jpg", type: "img" },
   { id: "126", name: "Phandelver", src: "/img/Phandelver.jpg", type: "img" },
   { id: "127", name: "Teste", src: "/img/beeholder-logo.png", type: "img" },
-  { id: "0", name: "Adicionar", src: faPlus, type: "icon" },
 ];
 
 const flexColumnStyle = css`
@@ -100,6 +111,27 @@ function ActionsMenu(props) {
   );
 }
 
+function CreateGameModal(props) {
+  return (
+    <Modal {...props} title="Adicionar ou Acessar uma Sala" footer={null}>
+      <Typography.Title level={4}>Criar uma nova sala</Typography.Title>
+      <Form layout="inline" css={{ marginBottom: 30 }}>
+        <Form.Item label="Nome da Sala">
+          <Input placeholder="Nome da Sala" />
+        </Form.Item>
+        <Button type="primary">Criar</Button>
+      </Form>
+      <Typography.Title level={4}>Acessar uma sala existente</Typography.Title>
+      <Form layout="inline">
+        <Form.Item label="ID da Sala">
+          <InputNumber placeholder="ID da Sala" />
+        </Form.Item>
+        <Button type="primary">Acessar</Button>
+      </Form>
+    </Modal>
+  );
+}
+
 const colmeiaStyle = css`
   margin: 0.5em 2em 2em;
   padding: 2em;
@@ -109,6 +141,8 @@ const colmeiaStyle = css`
 `;
 
 export default function Home() {
+  const [isCreateGameModalVisible, setIsCreateGameModalVisible] =
+    useState(false);
   return (
     <Layout>
       <Head>
@@ -127,8 +161,26 @@ export default function Home() {
       <Layout css={{ marginTop: 40 }}>
         <Content>
           <div css={colmeiaStyle}>
-            <Colmeia objects={CAMPANHAS} scale={70} n_cols={4} n_rows={10} />
+            <Colmeia
+              objects={[
+                ...CAMPANHAS,
+                {
+                  id: "0",
+                  name: "Adicionar",
+                  src: faPlus,
+                  type: "icon",
+                  onClick: () => setIsCreateGameModalVisible(true),
+                },
+              ]}
+              scale={70}
+              n_cols={4}
+              n_rows={10}
+            />
           </div>
+          <CreateGameModal
+            visible={isCreateGameModalVisible}
+            onCancel={() => setIsCreateGameModalVisible(false)}
+          />
         </Content>
         <Sider
           css={{
