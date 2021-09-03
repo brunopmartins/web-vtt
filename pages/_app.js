@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import '../styles/home.css'
+import '../styles/UserHomePage.module.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
  const queryClient = new QueryClient({

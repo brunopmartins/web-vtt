@@ -48,7 +48,7 @@ function ColmeiaContent(props) {
     }
     else if (props.type === "icon") {
         return (
-            <FontAwesomeIcon icon={props.src} css={[hexCellContentStyle, hexCellIconStyle]}/>
+            <FontAwesomeIcon icon={props.src} css={[hexCellContentStyle, hexCellIconStyle]} style={{width: "100%"}}/>
         )
     }
     return (
