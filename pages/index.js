@@ -2,7 +2,7 @@ import React from "react";
 import { Button, List, Space, Layout, Menu, Row, Col } from "antd";
 import { ReadOutlined, UserOutlined } from "@ant-design/icons";
 import Head from "next/head";
-import Colmeia from "../components/Colmeia";
+import Colmeia from "../components/colmeia";
 import Link from "next/link";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ImageHolder } from "../components/ImageHolder";

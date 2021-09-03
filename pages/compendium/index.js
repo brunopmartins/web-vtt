@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { List } from "antd";
-import { useSpellListQuery } from "../../components/queries/useSpellListQuery";
+import { useSpellListQuery } from "../../components/queries/spells/useSpellListQuery";
 import { css } from "@emotion/react";
-import Colmeia from "../../components/Colmeia";
+import Colmeia from "../../components/colmeia";
 import {
   faMagic,
   faDragon,
@@ -15,6 +15,7 @@ import {
   faAward,
   faFeather,
 } from "@fortawesome/free-solid-svg-icons";
+
 const COMPENDIUM_ITEMS = [
   { id: "1", name: "Spells", src: faMagic, type: "icon" },
   { id: "2", name: "Monsters", src: faDragon, type: "icon" },
