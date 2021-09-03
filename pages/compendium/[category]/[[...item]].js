@@ -19,6 +19,7 @@ import { useCompendiumListQuery } from "../../../components/queries/compendium/u
 import { useCompendiumItemQuery } from "../../../components/queries/compendium/useCompendiumItemQuery";
 import Link from "next/link";
 import { useEffect } from "react";
+import { CompendiumItem } from "../../../components/CompendiumItem";
 
 const { Title, Paragraph } = Typography;
 const { Sider, Content } = Layout;
@@ -167,10 +168,7 @@ export default function Compendium() {
         {!itemData && isLoadingItem ? (
           <Skeleton paragraph={{ rows: 12 }} active />
         ) : (
-          <>
-            <Title>{itemData?.name}</Title>
-            <Paragraph>{itemData?.desc}</Paragraph>
-          </>
+          <CompendiumItem category={category} item={itemData} />
         )}
       </Content>
       <Sider css={{ textAlign: "center" }} width={400}>
