@@ -1,21 +1,23 @@
-import '../styles/globals.css'
-import '../styles/UserHomePage.module.css'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import "../styles/globals.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ConfigProvider } from "antd";
 
- const queryClient = new QueryClient({
-   defaultOptions: {
-     queries: {
-       refetchOnWindowFocus: false,
-     },
-   },
- })
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-        </QueryClientProvider>
-    )
+  return (
+    <ConfigProvider locale="pt-BR">
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </ConfigProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
