@@ -1,7 +1,25 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Button, Form, Input } from "antd";
-import styles from "../../styles/Login.module.css";
+import { css } from "@emotion/react";
+
+const paginaStyle = css`
+  display: grid;
+  grid-template-columns: auto 600px auto;
+  grid-template-rows: 100vh;
+`;
+
+const loginStyle = css`
+  padding: 30vh 0 0 0;
+  margin: 0;
+  grid-column: 2;
+  place-content: center;
+  text-align: center;
+`;
+
+const logoStyle = css`
+  width: 100px;
+`;
 
 const formItemStyle = {
   marginBottom: 16,
@@ -16,15 +34,15 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.pagina}>
+    <div css={paginaStyle}>
       <Head>
         <title>Login</title>
         <link rel="icon" href="/img/favicon.ico" />
       </Head>
 
-      <main className={styles.login}>
+      <main css={loginStyle}>
         <img
-          className={styles.logo}
+          css={logoStyle}
           width={100}
           height={100}
           src="/img/beeholder-logo.png"

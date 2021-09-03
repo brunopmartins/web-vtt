@@ -104,7 +104,9 @@ function ActionsMenu(props) {
       </Menu.Item>
       <Menu.SubMenu key="user" icon={<UserOutlined />} title="José da Silva">
         <Menu.Item key="logout">
-          <a>Logout</a>
+          <Link href="/login">
+            <a>Logout</a>
+          </Link>
         </Menu.Item>
       </Menu.SubMenu>
     </Menu>
