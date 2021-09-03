@@ -1,8 +1,15 @@
-import React, { useState } from "react";
-import cx from "classnames";
-import Colmeia from "../components/colmeia";
+import React from "react";
+import { Button, List, Space, Layout, Menu, Row, Col } from "antd";
+import { ReadOutlined, UserOutlined } from "@ant-design/icons";
+import Head from "next/head";
+import Colmeia from "../components/Colmeia";
 import Link from "next/link";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { ImageHolder } from "../components/ImageHolder";
+import { css } from "@emotion/react";
+
+const { Header, Footer, Sider, Content } = Layout;
+
 const CAMPANHAS = [
   { id: "123", name: "Rasimash", src: "./img/RasimashWpp.jpg", type: "img" },
   { id: "124", name: "Subversão", src: "/img/SubersãoIcon.jpg", type: "img" },
@@ -11,31 +18,27 @@ const CAMPANHAS = [
   { id: "127", name: "Teste", src: "/img/beeholder-logo.png", type: "img" },
   { id: "0", name: "Adicionar", src: faPlus, type: "icon" },
 ];
-import styles from "../styles/UserHomePage.module.css";
-import { Button, List, Space } from "antd";
 
-const ImageHolder = (props) => {
+const flexColumnStyle = css`
+  display: flex;
+  flex-direction: column;
+`;
+
+const flexAlignCenterStyle = css`
+  display: flex;
+  align-items: center;
+`;
+
+const VTTName = (props) => {
   return (
-    <>
-      <div className={styles.imageHolder}>
-        <img
-          src={props.src}
-          className={cx(styles.image, styles[props.size], styles[props.format])}
-        />
-      </div>
-    </>
-  );
-};
-const VTTName = () => {
-  return (
-    <>
+    <div {...props}>
       <Link href="/">
         <div css={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
           <ImageHolder size="medium" src={"img/beeholder-logo.png"} />
           <h3 css={{ fontSize: 28, marginBottom: 0 }}>BeeHolder</h3>
         </div>
       </Link>
-    </>
+    </div>
   );
 };
 const UserProfileAcess = (props) => {
@@ -54,29 +57,25 @@ const UserProfileAcess = (props) => {
 };
 const PjSheetListHolder = (props) => {
   return (
-    <>
-      <div className={styles.flexColumn}>
-        <h3 className={cx(styles.h3, styles.flexAlignCenter)}>Suas Fichas</h3>
-        <PJSheetList
-          pjs={[
-            { name: "Aratosh", img: "img/Aratosh.png" },
-            { name: "Praestes Solis", img: "img/Praestes.png" },
-            { name: "Dareon Silvermane", img: "img/Dareon.png" },
-            { name: "Uya", img: "img/Uya.png" },
-          ]}
-        />
-      </div>
-    </>
+    <div css={flexColumnStyle}>
+      <h3 css={{ textAlign: "center", fontSize: "2em" }}>Suas Fichas</h3>
+      <PJSheetList
+        pjs={[
+          { name: "Aratosh", img: "img/Aratosh.png" },
+          { name: "Praestes Solis", img: "img/Praestes.png" },
+          { name: "Dareon Silvermane", img: "img/Dareon.png" },
+          { name: "Uya", img: "img/Uya.png" },
+        ]}
+      />
+    </div>
   );
 };
 const PJSheet = (props) => {
   return (
-    <>
-      <div className={styles.VTTname}>
-        <ImageHolder size="small" src={props.src} />
-        <h2>{props.name}</h2>
-      </div>
-    </>
+    <div css={flexAlignCenterStyle}>
+      <ImageHolder size="small" src={props.src} />
+      <h3 css={{ marginBottom: 0 }}>{props.name}</h3>
+    </div>
   );
 };
 const PJSheetList = ({ pjs }) => {
@@ -92,18 +91,73 @@ const PJSheetList = ({ pjs }) => {
     />
   );
 };
-const Header = () => {
+
+function ActionsMenu(props) {
   return (
-    <>
-      <div className="header">
-        <VTTName />
-      </div>
-    </>
+    <Menu
+      {...props}
+      theme="dark"
+      mode="horizontal"
+      triggerSubMenuAction="click"
+    >
+      <Menu.Item key="compendium" icon={<ReadOutlined />}>
+        <Link href="/compendium">Compendium</Link>
+      </Menu.Item>
+      <Menu.SubMenu key="user" icon={<UserOutlined />} title="José da Silva">
+        <Menu.Item key="logout">Logout</Menu.Item>
+      </Menu.SubMenu>
+    </Menu>
   );
-};
+}
+
+const colmeiaStyle = css`
+  margin: 0.5em 2em 2em;
+  padding: 2em;
+  height: 800px;
+  border-radius: 5%;
+  background-color: var(--cor-dos-frames);
+`;
+
 export default function Home() {
   return (
-    <div className={styles.root}>
+    <Layout>
+      <Head>
+        <title>BeeHolder</title>
+      </Head>
+      <Header>
+        <Row justify="space-between">
+          <Col span={8}>
+            <VTTName css={{ float: "left" }} />
+          </Col>
+          <Col span={16} push={12}>
+            <ActionsMenu />
+          </Col>
+        </Row>
+      </Header>
+      <Layout css={{ marginTop: 40 }}>
+        <Content>
+          <div css={colmeiaStyle}>
+            <Colmeia objects={CAMPANHAS} scale={70} n_cols={4} n_rows={10} />
+          </div>
+        </Content>
+        <Sider
+          css={{
+            backgroundColor: "inherit",
+            maxHeight: 800,
+            overflow: "auto",
+          }}
+          width={300}
+        >
+          <PjSheetListHolder />
+        </Sider>
+      </Layout>
+    </Layout>
+  );
+  return (
+    <div>
+      <Head>
+        <title>BeeHolder</title>
+      </Head>
       <div
         css={{
           display: "flex",
@@ -121,11 +175,11 @@ export default function Home() {
       >
         <UserProfileAcess />
       </div>
-      <div className={styles.colmeia}>
+      <div css={colmeiaStyle}>
         <Colmeia objects={CAMPANHAS} scale={70} n_cols={4} n_rows={10} />
       </div>
       <div>
-        <PjSheetListHolder className={styles.listHolder} />
+        <PjSheetListHolder />
       </div>
     </div>
   );

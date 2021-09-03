@@ -2,7 +2,7 @@ import Head from "next/head";
 import { List } from "antd";
 import { useSpellListQuery } from "../../components/queries/useSpellListQuery";
 import { css } from "@emotion/react";
-import Colmeia from "../../components/colmeia";
+import Colmeia from "../../components/Colmeia";
 import {
   faMagic,
   faDragon,
