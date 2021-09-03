@@ -1,6 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { css } from "@emotion/react";
+import Link from "next/link";
+import { Tooltip } from "antd";
 
 const colmeiaStyle = (scale, n_cols, n_rows) => css`
   --escala: calc(${scale}vw / ${n_cols * 2});
@@ -76,15 +78,30 @@ export default function Colmeia(props) {
   const scale = props.scale ? props.scale : 20;
   const n_cols = props.n_cols ? props.n_cols : 5;
   const n_rows = Math.ceil(objects.length / n_cols);
+
   return (
     <div css={colmeiaStyle(scale, n_cols, n_rows)}>
-      {objects.map((item) => (
-        <div key={item.id} css={hexCellStyle(n_cols)}>
-          <div css={hexCellContentStyle}>
-            <ColmeiaContent type={item.type} src={item.src} alt={item.name} />
-          </div>
-        </div>
-      ))}
+      {objects.map((item) => {
+        const colmeiaNode = (
+          <a key={item.id} css={hexCellStyle(n_cols)}>
+            <div css={hexCellContentStyle}>
+              <ColmeiaContent type={item.type} src={item.src} alt={item.name} />
+            </div>
+          </a>
+        );
+
+        const colmeiaWithTooltip = item.name ? (
+          <Tooltip title={item.name}>{colmeiaNode}</Tooltip>
+        ) : (
+          colmeiaNode
+        );
+
+        return item.url ? (
+          <Link href={item.url}>{colmeiaWithTooltip}</Link>
+        ) : (
+          colmeiaWithTooltip
+        );
+      })}
     </div>
   );
 }

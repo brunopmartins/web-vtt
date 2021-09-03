@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ConfigProvider } from "antd";
+import ptBR from "antd/lib/locale/pt_BR";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,7 +13,7 @@ const queryClient = new QueryClient({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ConfigProvider locale="pt-BR">
+    <ConfigProvider locale={ptBR}>
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
       </QueryClientProvider>

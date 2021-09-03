@@ -41,20 +41,6 @@ const VTTName = (props) => {
     </div>
   );
 };
-const UserProfileAcess = (props) => {
-  return (
-    <div {...props}>
-      <Space size={8}>
-        <Link href="/login">
-          <Button size="large">Login</Button>
-        </Link>
-        <Link href="/compendium">
-          <Button size="large">Compendium</Button>
-        </Link>
-      </Space>
-    </div>
-  );
-};
 const PjSheetListHolder = (props) => {
   return (
     <div css={flexColumnStyle}>
@@ -101,10 +87,14 @@ function ActionsMenu(props) {
       triggerSubMenuAction="click"
     >
       <Menu.Item key="compendium" icon={<ReadOutlined />}>
-        <Link href="/compendium">Compendium</Link>
+        <Link href="/compendium">
+          <a>Compendium</a>
+        </Link>
       </Menu.Item>
       <Menu.SubMenu key="user" icon={<UserOutlined />} title="José da Silva">
-        <Menu.Item key="logout">Logout</Menu.Item>
+        <Menu.Item key="logout">
+          <a>Logout</a>
+        </Menu.Item>
       </Menu.SubMenu>
     </Menu>
   );
@@ -152,35 +142,5 @@ export default function Home() {
         </Sider>
       </Layout>
     </Layout>
-  );
-  return (
-    <div>
-      <Head>
-        <title>BeeHolder</title>
-      </Head>
-      <div
-        css={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Header />
-      </div>
-      <div
-        css={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <UserProfileAcess />
-      </div>
-      <div css={colmeiaStyle}>
-        <Colmeia objects={CAMPANHAS} scale={70} n_cols={4} n_rows={10} />
-      </div>
-      <div>
-        <PjSheetListHolder />
-      </div>
-    </div>
   );
 }
