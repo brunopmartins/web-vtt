@@ -5,8 +5,6 @@ import {
   Modal,
   Layout,
   Menu,
-  Row,
-  Col,
   Form,
   Input,
   Typography,
@@ -23,7 +21,7 @@ import { useCurrentUser } from "../lib/LoginProvider";
 import { useRouter } from "next/router";
 import { useLogoutMutation } from "../lib/queries/auth/useLogoutMutation";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 
 const CAMPANHAS = [
   { id: "123", name: "Rasimash", src: "./img/RasimashWpp.jpg", type: "img" },
@@ -159,14 +157,12 @@ export default function Home() {
         <title>BeeHolder</title>
       </Head>
       <Header>
-        <Row justify="space-between">
-          <Col span={8}>
-            <VTTName css={{ float: "left" }} />
-          </Col>
-          <Col span={16} push={12}>
+        <div css={{ position: "relative" }}>
+          <VTTName css={{ float: "left" }} />
+          <div css={{ position: "absolute", right: 0 }}>
             <ActionsMenu />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Header>
       <Layout css={{ marginTop: 40 }}>
         <Content>
