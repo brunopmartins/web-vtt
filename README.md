@@ -20,12 +20,12 @@ npm run dev
 
 #### Option 2: With an external backend
 
-Our auto-deployed backend server: [TODO]
+Our auto-deployed backend server: `https://api-vtt.herokuapp.com`
 
 Run the development server specifying the backend url:
 
 ```bash
-BACKEND_URL=http://foo.bar/ npm run dev
+BACKEND_URL=https://api-vtt.herokuapp.com npm run dev
 ```
 
 #### Done!
