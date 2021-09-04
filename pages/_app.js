@@ -1,23 +1,24 @@
-import '../styles/globals.css'
-import '../styles/home.css'
-// to do: remove global import
-import '../styles/playerSheet.css'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import "../styles/globals.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ConfigProvider } from "antd";
+import ptBR from "antd/lib/locale/pt_BR";
 
- const queryClient = new QueryClient({
-   defaultOptions: {
-     queries: {
-       refetchOnWindowFocus: false,
-     },
-   },
- })
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-        </QueryClientProvider>
-    )
+  return (
+    <ConfigProvider locale={ptBR}>
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </ConfigProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
