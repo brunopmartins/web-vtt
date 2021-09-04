@@ -17,7 +17,10 @@ import Link from "next/link";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ImageHolder } from "../components/ImageHolder";
 import { css } from "@emotion/react";
-import { useCurrentUser } from "../lib/LoginProvider";
+import {
+  useCurrentUser,
+  withAuthenticationRequired,
+} from "../lib/LoginProvider";
 import { useRouter } from "next/router";
 import { useLogoutMutation } from "../lib/queries/auth/useLogoutMutation";
 
@@ -148,9 +151,10 @@ const colmeiaStyle = css`
   background-color: var(--cor-dos-frames);
 `;
 
-export default function Home() {
+export default withAuthenticationRequired(function Home() {
   const [isCreateGameModalVisible, setIsCreateGameModalVisible] =
     useState(false);
+
   return (
     <Layout>
       <Head>
@@ -201,4 +205,4 @@ export default function Home() {
       </Layout>
     </Layout>
   );
-}
+});
