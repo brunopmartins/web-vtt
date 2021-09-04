@@ -19,6 +19,9 @@ import Link from "next/link";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ImageHolder } from "../components/ImageHolder";
 import { css } from "@emotion/react";
+import { useCurrentUser } from "../lib/LoginProvider";
+import { useRouter } from "next/router";
+import { useLogoutMutation } from "../lib/queries/auth/useLogoutMutation";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -90,6 +93,13 @@ const PJSheetList = ({ pjs }) => {
 };
 
 function ActionsMenu(props) {
+  const currentUser = useCurrentUser();
+  const router = useRouter();
+  const logout = useLogoutMutation({
+    onSettled() {
+      router.push("/login");
+    },
+  });
   return (
     <Menu
       {...props}
@@ -102,11 +112,9 @@ function ActionsMenu(props) {
           <a>Compendium</a>
         </Link>
       </Menu.Item>
-      <Menu.SubMenu key="user" icon={<UserOutlined />} title="José da Silva">
-        <Menu.Item key="logout">
-          <Link href="/login">
-            <a>Logout</a>
-          </Link>
+      <Menu.SubMenu key="user" icon={<UserOutlined />} title={currentUser.name}>
+        <Menu.Item key="logout" onClick={() => logout.mutate()}>
+          <a>Logout</a>
         </Menu.Item>
       </Menu.SubMenu>
     </Menu>
