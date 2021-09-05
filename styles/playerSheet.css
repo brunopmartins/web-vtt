@@ -4,7 +4,7 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
-form {
+#player-sheet {
     width: 800px;
     right: 0;
     left: 0;
@@ -338,10 +338,15 @@ rules for the attributes
 
 #inspiration input {
     appearance: none;
+    width: 38px;
+    height: 28px;
     border: 1px solid var(--cor-das-bordas);
-    padding: 15px;
     border-radius: 10px;
-    margin: 0;
+    order: 1;
+}
+
+#inspiration input:checked {
+    background-color: var(--checked);
 }
 
 #proficiency-bonus input {
@@ -736,7 +741,7 @@ rules for attacks and spellcasting
     border: 1px solid var(--cor-das-bordas);
     border-radius: 10px 0 0 10px;
     border-right: 0;
-    width: 20px;
+    width: 0;
     font-size: 8px;
     text-align: center;
     padding: 3px 0;
@@ -746,15 +751,27 @@ rules for attacks and spellcasting
 .equipment > div .money ul li input {
     border: 1px solid var(--cor-das-bordas);
     border-radius: 10px;
-    width: 40px;
+    width: 60px;
     padding: 10px 3px;
     font-size: 12px;
     text-align: center;
 }
 
-.equipment > div textarea {
+.equipment > div table {
     flex: 1;
     border: 0;
+    margin: 0 15px;
+}
+
+.equipment > div tbody tr {
+    vertical-align: top;
+}
+
+.equipment > div table input {
+    width: calc(100% - 4px);
+    border: 0;
+    font-size: 10px;
+    padding: 3px;
 }
 
 /*
