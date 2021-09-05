@@ -5,6 +5,9 @@ import { Input } from 'antd';
 // import styles from '../../styles/playerSheet.css';
 
 function getScoreModifier(score, level, proficiency) {
+  console.log(score);
+  console.log(level);
+  console.log(proficiency);
   const proficiencyBonus = proficiency ? getProficiencyModifier(level) : 0;
   return Math.floor((score - 10)/2) + proficiencyBonus;
 }
@@ -18,13 +21,6 @@ function handleClassAndLevelChange(classAndLevel, onChange) {
   const characterLevel = classAndLevelArr.pop();
   const characterClass = classAndLevelArr.join(" ");
   onChange({class: characterClass, level: characterLevel});
-}
-
-function changePage(pages, page, onChange) {
-  pages.bio = '';
-  pages.sheet = '';
-  pages.spells = '';
-  onChange(page);
 }
 
 let bioInfo = {
@@ -142,7 +138,48 @@ let characterInfo = {
     ]
   },
   spellcasting: {
-    attribute: 'Wisdom'
+    attribute: 'wis',
+    features: 'I use my Arcane Focus to cast spells',
+    pouch_inventory: [
+      'Arcane Focus'
+    ],
+    cantrips: [
+      'Light',
+      'Minor Ilussion',
+      'Sacred Flame'
+    ],
+    level_1: [
+      'Burning Hands',
+      'Cure Wounds',
+      'Detect Magic',
+      'Faerie Fire'
+    ],
+    level_2: [
+      'Flaming Sphere',
+      'Scorching Ray'
+    ],
+    level_3: [
+      'Daylight',
+      'Fireball'
+    ],
+    level_4: [
+
+    ],
+    level_5: [
+
+    ],
+    level_6: [
+
+    ],
+    level_7: [
+
+    ],
+    level_8: [
+
+    ],
+    level_9: [
+
+    ]
   }
 }
 
@@ -617,7 +654,7 @@ function Spells({character, page, onChange}) {
           </li>
             <li>
                 <label htmlFor="spellcasting-ability-input">Spellcasting Ability</label>
-              <select name="spellcasting-ability-input" id="spellcasting-ability-input">
+              <select name="spellcasting-ability-input" id="spellcasting-ability-input" value={character.spellcasting.attribute} onChange={(e) => onChange({spellcasting: {attribute: e.target.value}})}>
                   <option value="str">Strenght</option>
                   <option value="dex">Dexterity</option>
                   <option value="con">Constitution</option>
@@ -628,11 +665,11 @@ function Spells({character, page, onChange}) {
             </li>
             <li>
               <label htmlFor="spell-atk-bonus-input">Spell Attack Bonus</label>
-              <Input type="text" id="spell-atk-bonus-input" placeholder="+5"/>
+              <Input type="text" id="spell-atk-bonus-input" value={getScoreModifier(character.attributes.scores[character.spellcasting.attribute].value, character.level, character.attributes.scores[character.spellcasting.attribute].proficiency)}/>
             </li>
             <li>
               <label htmlFor="spell-save-dc-input">Spell Save DC</label>
-              <Input type="text" id="spell-save-dc-input" placeholder="15"/>
+              <Input type="text" id="spell-save-dc-input" value={8 + getScoreModifier(character.attributes.scores[character.spellcasting.attribute].value, character.level, character.attributes.scores[character.spellcasting.attribute].proficiency)}/>
             </li>
         </ul>
       </section>
@@ -644,16 +681,30 @@ function Spells({character, page, onChange}) {
                         <th>Cantrips</th>
                     </tr>
                 </thead>
-                <tbody/>
+                <tbody>
+                  {character.spellcasting.cantrips.map((cantrip) => (
+                    <tr>
+                      <td><Input type="text" value={cantrip}/></td>
+                    </tr>
+                  ))}
+                </tbody>
             </table>
         </section>
         <section id="spells-features">
             <label htmlFor="spells-features-input">Spellcasting Features</label>
-            <textarea id="spells-features-input"></textarea>
+            <textarea id="spells-features-input" value={character.spellcasting.features} onChange={(e) => onChange({spellcasting: {features: e.target.value}})}></textarea>
         </section>
         <section id="spells-material-components">
             <label htmlFor="spells-material-components-input">Component Pouch Inventory</label>
-            <textarea id="spells-material-components-input"></textarea>
+            <table>
+                <tbody>
+                  {character.spellcasting.pouch_inventory.map((item) => (
+                    <tr>
+                      <td><Input type="text" value={item}/></td>
+                    </tr>
+                  ))}
+                </tbody>
+            </table>
         </section>
         <section id="spells-lvl-1">
           <table>
@@ -662,7 +713,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 1</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_1.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-2">
@@ -672,7 +729,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 2</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_2.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-3">
@@ -682,7 +745,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 3</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_3.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-4">
@@ -692,7 +761,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 4</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_4.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-5">
@@ -702,7 +777,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 5</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_5.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-6">
@@ -712,7 +793,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 6</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_6.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-7">
@@ -722,7 +809,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 7</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_7.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-8">
@@ -732,7 +825,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 8</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_8.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
         <section id="spells-lvl-9">
@@ -742,7 +841,13 @@ function Spells({character, page, onChange}) {
                 <th>Level 9</th>
               </tr>
             </thead>
-            <tbody/>
+            <tbody>
+              {character.spellcasting.level_9.map((spell) => (
+                <tr>
+                  <td><Input type="text" value={spell}/></td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
       </section>
