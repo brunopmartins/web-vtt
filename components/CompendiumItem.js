@@ -36,10 +36,6 @@ h2 {
     margin-top: 0;
 }
 
-.card {
-    width: 600px;
-}
-
 header, section {
     border-bottom: 2px solid;
     padding-bottom: 0.5em;
@@ -96,10 +92,6 @@ li {
 }
 
 /* Specific to Class Card */
-
-#card-classe {
-     width: 1200px;
-}
 
 #card-classe h3 {
     margin: 0;
@@ -225,14 +217,65 @@ function MonsterItem({ item }) {
     );
 }
 
+function ClassItem({ item }) {
+    return (
+        <div id="card-classe" className="card">
+            <header>
+                <h1>{item.name}</h1>
+            </header>
+            <section id="class-stats" className="card-main">
+                <h3 className="first-of-section">Hit Points</h3>
+                <p><strong>Hit Dice:</strong> 1d{item.hit_die}.</p>
+                <p><strong>Hit Points at 1st Level:</strong> {item.hit_die} + your Constitution modifier.</p>
+                <p><strong>Hit Points at Higher Levels:</strong> 1d{item.hit_die} (or {item.hit_die/2+1}) + your Constitution modifier per {item.name} level after 1st.</p>
+                <h3>Proficiencies</h3>
+                {!!item.proficiencies?.length && <p>{item.proficiencies.map(prof => `${prof.name}`).join(", ")}</p>}
+                {!!item.starting_equipment?.length && (<>
+                    <h3>Starting Equipment</h3>
+                    <p>You start with the following items</p><ul>
+                    {item.starting_equipment.map(eq => (<li>{eq.equipment.name}</li>))}
+                </ul></>)}
+            </section>
+            <div id="class-features">
+                {!!item.spellcasting && <section><h2>Spellcasting</h2> {item.spellcasting.info.map(sc => (<p><strong>{sc.name}</strong> {sc.desc}</p>))}</section>}
+            </div>
+        </div>
+    );
+}
+
+function RaceItem({ item }) {
+    console.log(item);
+    return (
+        <div id="card-raça" className="card">
+            <header>
+                <h1>{item.name}</h1>
+            </header>
+            <section id="race-bonus" className="card-main">
+                <p><strong>Ability Scores</strong> {item.ability_bonuses.map(ability => `${ability.ability_score.name} ${plusOrMinus(ability.bonus)}`).join(", ")}</p>
+                <p><strong>Size</strong> {item.size}</p>
+                <p><strong>Speed</strong> {item.speed}ft.</p>
+            </section>
+            <section id="description">
+                <p><strong>Age</strong> {item.age}</p>
+                <p><strong>Alignment</strong> {item.alignment}</p>
+                <p><strong>Size</strong> {item.size_description}</p>
+                {!!item.traits?.length && <p><strong>Traits</strong> {item.traits.map(trait => trait.name).join(", ")}</p>}
+                <p><strong>Languages</strong> {item.languages.map(language => language.name).join(", ")}</p>
+            </section>
+        </div>
+    );
+}
+
 const CategoryComponents = {
     spells: SpellItem,
     monsters: MonsterItem,
+    classes: ClassItem,
+    races: RaceItem,
 };
 
 export function CompendiumItem({ category, item }) {
     if (!item || !category) return null;
-
+    console.log(category);
     const CategoryComponent = CategoryComponents[category] ?? DefaultItem;
     return (
         <div css={cardStyle}>
