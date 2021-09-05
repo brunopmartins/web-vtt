@@ -244,7 +244,6 @@ function ClassItem({ item }) {
 }
 
 function RaceItem({ item }) {
-    console.log(item);
     return (
         <div id="card-raça" className="card">
             <header>
@@ -275,7 +274,6 @@ const CategoryComponents = {
 
 export function CompendiumItem({ category, item }) {
     if (!item || !category) return null;
-    console.log(category);
     const CategoryComponent = CategoryComponents[category] ?? DefaultItem;
     return (
         <div css={cardStyle}>
