@@ -4,12 +4,20 @@ import { merge } from 'lodash';
 import { Input } from 'antd';
 // import styles from '../../styles/playerSheet.css';
 
-function getScoreModifier(score) {
-  return Math.floor((score - 10)/2);
+function getScoreModifier(score, proficiency) {
+  const proficiencyBonus = proficiency ? getProficiencyModifier(characterInfo.level) : 0;
+  return Math.floor((score - 10)/2) + proficiencyBonus;
 }
 
 function getProficiencyModifier(level) {
   return Math.ceil((level/4) + 1);
+}
+
+function handleClassAndLevelChange(classAndLevel, onChange) {
+  const classAndLevelArr = classAndLevel.split(" ");
+  const characterLevel = classAndLevelArr.pop();
+  const characterClass = classAndLevelArr.join(" ");
+  onChange({class: characterClass, level: characterLevel});
 }
 
 let bioInfo = {
@@ -34,18 +42,56 @@ let characterInfo = {
   },
   attributes: {
     scores: {
-      str: 8,
-      dex: 12,
-      con: 15,
-      int: 14,
-      wis: 18,
-      cha: 12
+      str: {
+        value: 8,
+        proficiency: false
+      },
+      dex: {
+        value:12,
+        proficiency: false
+      },
+      con: {
+        value:15,
+        proficiency: false
+      },
+      int: {
+        value:14,
+        proficiency: true
+      },
+      wis: {
+        value:18,
+        proficiency: true
+      },
+      cha: {
+        value:12,
+        proficiency: false
+      },      
     },
     AC: 16,
     speed: 30,
     max_hp: 44,
     current_hp: 44,
-    temporary_hp: 0
+    temporary_hp: 0,
+    inspiration: false,
+    skills_proficiency: {
+      acrobatics: true,
+      animal_handling: false,
+      arcana: true,
+      athletics: false,
+      deception: false,
+      history: true,
+      insight: false,
+      intimidation: false,
+      medicine: true,
+      nature: false,
+      perception: false,
+      performance: false,
+      persuasion: false,
+      religion: true,
+      sleigth_of_hand: false,
+      stealth: false,
+      survival: false
+    }
   },
   attacks_and_spellcasting: [
     {
@@ -80,7 +126,7 @@ function SheetHeader({character, onChange}) {
         <ul>
           <li class='double-column'>
             <label htmlFor='class-and-level-input'>Class & Level</label>
-            <Input type='text' id='class-and-level-input' value={character.class + ' ' + character.level}/>
+            <Input type='text' id='class-and-level-input' value={character.class + ' ' + character.level} onChange={(e) => handleClassAndLevelChange(e.target.value, onChange)}/>
           </li>
           <li>
             <label htmlFor='background-input'>Background</label>
@@ -145,55 +191,55 @@ function Sheet({character, onChange}) {
               <li>
                 <div class="score">
                   <label htmlFor="str-score-input">Strength</label>
-                  <Input type="number" id="str-score-input" value={character.attributes.scores.str} onChange={(e) => onChange({attributes: {scores: {str: e.target.value}}})}/>
+                  <Input type="number" id="str-score-input" value={character.attributes.scores.str.value} onChange={(e) => onChange({attributes: {scores: {str: {value: e.target.value}}}})}/>
                 </div>
                 <div class="modifier">
-                  <input type="text" id="str-mod-input" value={getScoreModifier(character.attributes.scores.str)} class="str-mod" readonly/>
+                  <input type="text" id="str-mod-input" value={getScoreModifier(character.attributes.scores.str.value)} class="str-mod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
                   <label htmlFor="dex-score-input">Dexterity</label>
-                  <Input type="number" id="dex-score-input" value={character.attributes.scores.dex} onChange={(e) => onChange({attributes: {scores: {dex: e.target.value}}})}/>
+                  <Input type="number" id="dex-score-input" value={character.attributes.scores.dex.value} onChange={(e) => onChange({attributes: {scores: {dex: {value: e.target.value}}}})}/>
                 </div>
                 <div class="modifier">
-                  <input type="text" id="dex-mod-input" value={getScoreModifier(character.attributes.scores.dex)} class="dex-mod" readonly/>
+                  <input type="text" id="dex-mod-input" value={getScoreModifier(character.attributes.scores.dex.value)} class="dex-mod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
                   <label htmlFor="con-score-input">Constitution</label>
-                  <Input type="number" id="con-score-input" value={character.attributes.scores.con} onChange={(e) => onChange({attributes: {scores: {con: e.target.value}}})}/>
+                  <Input type="number" id="con-score-input" value={character.attributes.scores.con.value} onChange={(e) => onChange({attributes: {scores: {con: {value: e.target.value}}}})}/>
                 </div>
                 <div class="modifier">
-                  <input type="text" id="con-mod-input" value={getScoreModifier(character.attributes.scores.con)} class="con-mod" readonly/>
+                  <input type="text" id="con-mod-input" value={getScoreModifier(character.attributes.scores.con.value)} class="con-mod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
                   <label htmlFor="int-score-input">Intelligence</label>
-                  <Input type="number" id="int-score-input" value={character.attributes.scores.int} onChange={(e) => onChange({attributes: {scores: {int: e.target.value}}})}/>
+                  <Input type="number" id="int-score-input" value={character.attributes.scores.int.value} onChange={(e) => onChange({attributes: {scores: {int: {value: e.target.value}}}})}/>
                 </div>
                 <div class="modifier">
-                  <input type="text" id="int-mod-input" value={getScoreModifier(character.attributes.scores.int)} class="int-mod" readonly/>
+                  <input type="text" id="int-mod-input" value={getScoreModifier(character.attributes.scores.int.value)} class="int-mod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
                   <label htmlFor="wis-score-input">Wisdom</label>
-                  <Input type="number" id="wis-score-input" value={character.attributes.scores.wis} onChange={(e) => onChange({attributes: {scores: {wis: e.target.value}}})}/>
+                  <Input type="number" id="wis-score-input" value={character.attributes.scores.wis.value} onChange={(e) => onChange({attributes: {scores: {wis: {value: e.target.value}}}})}/>
                 </div>
                 <div class="modifier">
-                  <input type="text" id="wis-mod-input" value={getScoreModifier(character.attributes.scores.wis)} class="wis-mod" readonly/>
+                  <input type="text" id="wis-mod-input" value={getScoreModifier(character.attributes.scores.wis.value)} class="wis-mod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
                   <label htmlFor="cha-score-input">Charisma</label>
-                  <Input type="number" id="cha-score-input" value={character.attributes.scores.cha} onChange={(e) => onChange({attributes: {scores: {cha: e.target.value}}})}/>
+                  <Input type="number" id="cha-score-input" value={character.attributes.scores.cha.value} onChange={(e) => onChange({attributes: {scores: {cha: {value: e.target.value}}}})}/>
                 </div>
                 <div class="modifier">
-                  <input type="text" id="cha-mod-input" value={getScoreModifier(character.attributes.scores.cha)} class="cha-mod" readonly/>
+                  <input type="text" id="cha-mod-input" value={getScoreModifier(character.attributes.scores.cha.value)} class="cha-mod" readonly/>
                 </div>
               </li>
             </ul>
@@ -203,7 +249,7 @@ function Sheet({character, onChange}) {
               <div class="att-label">
                 <label htmlFor="inspiration-input">Inspiration</label>
               </div>
-              <Input type="checkbox" id="inspiration-input"/>
+              <Input type="checkbox" id="inspiration-input" value={character.inspiration} onChange={(e) => {onChange({inspiration: e.target.checked})}}/>
             </div>
             <div id="proficiency-bonus" class="box">
               <div class="att-label">
@@ -215,33 +261,33 @@ function Sheet({character, onChange}) {
               <ul>
                 <li>
                   <label htmlFor="str-save-input">Strength</label>
-                  <Input type="text" id="str-save-input" class="str-mod" value={getScoreModifier(character.attributes.scores.str)}/>
-                  <Input type="checkbox" id="str-save-prof"/>
+                  <Input type="text" id="str-save-input" class="str-mod" value={getScoreModifier(character.attributes.scores.str.value, character.attributes.scores.str.proficiency)}/>
+                  <Input type="checkbox" id="str-save-prof" value={character.attributes.scores.str.proficiency} onChange={(e) => onChange({attributes: {scores: {str: {proficiency: e.target.checked}}}})}/>
                 </li>
                 <li>
                   <label htmlFor="dex-save-input">Dexterity</label>
-                  <Input type="text" id="dex-save-input" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex)}/>
-                  <Input type="checkbox" id="dex-save-prof"/>
+                  <Input type="text" id="dex-save-input" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex.value, character.attributes.scores.dex.proficiency)}/>
+                  <Input type="checkbox" id="dex-save-prof" value={character.attributes.scores.dex.proficiency} onChange={(e) => onChange({attributes: {scores: {dex: {proficiency: e.target.checked}}}})}/>
                 </li>
                 <li>
                   <label htmlFor="con-save-input">Constitution</label>
-                  <Input type="text" id="con-save-input" class="con-mod" value={getScoreModifier(character.attributes.scores.con)}/>
-                  <Input type="checkbox" id="con-save-prof"/>
+                  <Input type="text" id="con-save-input" class="con-mod" value={getScoreModifier(character.attributes.scores.con.value, character.attributes.scores.con.proficiency)}/>
+                  <Input type="checkbox" id="con-save-prof" value={character.attributes.scores.con.proficiency} onChange={(e) => onChange({attributes: {scores: {con: {proficiency: e.target.checked}}}})}/>
                 </li>
                 <li>
                   <label htmlFor="int-save-input">Intelligence</label>
-                  <Input type="text" id="int-save-input" class="int-mod" value={getScoreModifier(character.attributes.scores.int)}/>
-                  <Input type="checkbox" id="int-save-prof"/>
+                  <Input type="text" id="int-save-input" class="int-mod" value={getScoreModifier(character.attributes.scores.int.value, character.attributes.scores.int.proficiency)}/>
+                  <Input type="checkbox" id="int-save-prof" value={character.attributes.scores.int.proficiency} onChange={(e) => onChange({attributes: {scores: {int: {proficiency: e.target.checked}}}})}/>
                 </li>
                 <li>
                   <label htmlFor="wis-save-input">Wisdom</label>
-                  <Input type="text" id="wis-save-input" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis)}/>
-                  <Input type="checkbox" id="wis-save-prof"/>
+                  <Input type="text" id="wis-save-input" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis.value, character.attributes.scores.wis.proficiency)}/>
+                  <Input type="checkbox" id="wis-save-prof" value={character.attributes.scores.wis.proficiency} onChange={(e) => onChange({attributes: {scores: {wis: {proficiency: e.target.checked}}}})}/>
                 </li>
                 <li>
                   <label htmlFor="cha-save-input">Charisma</label>
-                  <Input type="text" id="cha-save-input" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha)}/>
-                  <Input type="checkbox" id="cha-save-prof"/>
+                  <Input type="text" id="cha-save-input" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha.value, character.attributes.scores.cha.proficiency)}/>
+                  <Input type="checkbox" id="cha-save-prof" value={character.attributes.scores.cha.proficiency} onChange={(e) => onChange({attributes: {scores: {cha: {proficiency: e.target.checked}}}})}/>
                 </li>
               </ul>
               <div class="label">Saving Throws</div>
@@ -250,88 +296,88 @@ function Sheet({character, onChange}) {
               <ul>
                 <li>
                   <label htmlFor="acrobatics">Acrobatis <span class="skill-span">(Dex)</span></label>
-                  <Input type="text" id="acrobatics" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex)} readonly/>
-                  <Input type="checkbox" id="acrobatics-prof"/>
+                  <Input type="text" id="acrobatics" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex.value, character.attributes.skills_proficiency.acrobatics)} readonly/>
+                  <Input type="checkbox" id="acrobatics-prof" value={character.attributes.skills_proficiency.acrobatics} onChange={(e) => {onChange({attributes: { skills_proficiency: {acrobatics: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="animal-handling">Animal Handling <span class="skill-span">(Wis)</span></label>
-                  <Input type="text" id="animal-handling" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis)} readonly/>
-                  <Input type="checkbox" id="animal-handling-prof"/>
+                  <Input type="text" id="animal-handling" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis.value, character.attributes.skills_proficiency.animal_handling)} readonly/>
+                  <Input type="checkbox" id="animal-handling-prof" value={character.attributes.skills_proficiency.animal_handling} onChange={(e) => {onChange({attributes: { skills_proficiency: {animal_handling: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="arcana">Arcana <span class="skill-span">(Int)</span></label>
-                  <Input type="text" id="arcana" class="int-mod" value={getScoreModifier(character.attributes.scores.int)} readonly/>
-                  <Input type="checkbox" id="arcana-prof"/>
+                  <Input type="text" id="arcana" class="int-mod" value={getScoreModifier(character.attributes.scores.int.value, character.attributes.skills_proficiency.arcana)} readonly/>
+                  <Input type="checkbox" id="arcana-prof" value={character.attributes.skills_proficiency.arcana} onChange={(e) => {onChange({attributes: { skills_proficiency: {arcana: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="athletics">Athletics <span class="skill-span">(Str)</span></label>
-                  <Input type="text" id="athletics" class="str-mod" value={getScoreModifier(character.attributes.scores.str)} readonly/>
-                  <Input type="checkbox" id="athletics-prof"/>
+                  <Input type="text" id="athletics" class="str-mod" value={getScoreModifier(character.attributes.scores.str.value, character.attributes.skills_proficiency.athletics)} readonly/>
+                  <Input type="checkbox" id="athletics-prof" value={character.attributes.skills_proficiency.athletics} onChange={(e) => {onChange({attributes: { skills_proficiency: {athletics: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="deception">Deception <span class="skill-span">(Cha)</span></label>
-                  <Input type="text" id="deception" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha)} readonly/>
-                  <Input type="checkbox" id="deception-prof"/>
+                  <Input type="text" id="deception" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha.value, character.attributes.skills_proficiency.deception)} readonly/>
+                  <Input type="checkbox" id="deception-prof" value={character.attributes.skills_proficiency.deception} onChange={(e) => {onChange({attributes: { skills_proficiency: {deception: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="history">History <span class="skill-span">(Int)</span></label>
-                  <Input type="text" id="history" class="int-mod" value={getScoreModifier(character.attributes.scores.int)} readonly/>
-                  <Input type="checkbox" id="history-prof"/>
+                  <Input type="text" id="history" class="int-mod" value={getScoreModifier(character.attributes.scores.int.value, character.attributes.skills_proficiency.history)} readonly/>
+                  <Input type="checkbox" id="history-prof" value={character.attributes.skills_proficiency.history} onChange={(e) => {onChange({attributes: { skills_proficiency: {history: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="insight">Insight <span class="skill-span">(Wis)</span></label>
-                  <Input type="text" id="insight" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis)} readonly/>
-                  <Input type="checkbox" id="insight-prof"/>
+                  <Input type="text" id="insight" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis.value, character.attributes.skills_proficiency.insight)} readonly/>
+                  <Input type="checkbox" id="insight-prof" value={character.attributes.skills_proficiency.insight} onChange={(e) => {onChange({attributes: { skills_proficiency: {insight: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="intimidation">Intimidation <span class="skill-span">(Cha)</span></label>
-                  <Input type="text" id="intimidation" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha)} readonly/>
-                  <Input type="checkbox" id="intimidation-prof"/>
+                  <Input type="text" id="intimidation" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha.value, character.attributes.skills_proficiency.intimidation)} readonly/>
+                  <Input type="checkbox" id="intimidation-prof" value={character.attributes.skills_proficiency.intimidation} onChange={(e) => {onChange({attributes: { skills_proficiency: {intimidation: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="medicine">Medicine <span class="skill-span">(Wis)</span></label>
-                  <Input type="text" id="medicine" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis)} readonly/>
-                  <Input type="checkbox" id="medicine-prof"/>
+                  <Input type="text" id="medicine" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis.value, character.attributes.skills_proficiency.medicine)} readonly/>
+                  <Input type="checkbox" id="medicine-prof" value={character.attributes.skills_proficiency.medicine} onChange={(e) => {onChange({attributes: { skills_proficiency: {medicine: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="nature">Nature <span class="skill-span">(Int)</span></label>
-                  <Input type="text" id="nature" class="int-mod" value={getScoreModifier(character.attributes.scores.int)} readonly/>
-                  <Input type="checkbox" id="nature-prof"/>
+                  <Input type="text" id="nature" class="int-mod" value={getScoreModifier(character.attributes.scores.int.value, character.attributes.skills_proficiency.nature)} readonly/>
+                  <Input type="checkbox" id="nature-prof" value={character.attributes.skills_proficiency.nature} onChange={(e) => {onChange({attributes: { skills_proficiency: {nature: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="perception">Perception <span class="skill-span">(Wis)</span></label>
-                  <Input type="text" id="perception" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis)} readonly/>
-                  <Input type="checkbox" id="perception-prof"/>
+                  <Input type="text" id="perception" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis.value, character.attributes.skills_proficiency.perception)} readonly/>
+                  <Input type="checkbox" id="perception-prof" value={character.attributes.skills_proficiency.perception} onChange={(e) => {onChange({attributes: { skills_proficiency: {perception: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="performance">Performance <span class="skill-span">(Cha)</span></label>
-                  <Input type="text" id="performance" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha)} readonly/>
-                  <Input type="checkbox" id="performance-prof"/>
+                  <Input type="text" id="performance" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha.value, character.attributes.skills_proficiency.performance)} readonly/>
+                  <Input type="checkbox" id="performance-prof" value={character.attributes.skills_proficiency.performance} onChange={(e) => {onChange({attributes: { skills_proficiency: {performance: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="persuasion">Persuasion <span class="skill-span">(Cha)</span></label>
-                  <Input type="text" id="persuasion" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha)} readonly/>
-                  <Input type="checkbox" id="persuasion-prof"/>
+                  <Input type="text" id="persuasion" class="cha-mod" value={getScoreModifier(character.attributes.scores.cha.value, character.attributes.skills_proficiency.persuasion)} readonly/>
+                  <Input type="checkbox" id="persuasion-prof" value={character.attributes.skills_proficiency.persuasion} onChange={(e) => {onChange({attributes: { skills_proficiency: {persuasion: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="religion">Religion <span class="skill-span">(Int)</span></label>
-                  <Input type="text" id="religion" class="int-mod" value={getScoreModifier(character.attributes.scores.int)} readonly/>
-                  <Input type="checkbox" id="religion-prof"/>
+                  <Input type="text" id="religion" class="int-mod" value={getScoreModifier(character.attributes.scores.int.value, character.attributes.skills_proficiency.religion)} readonly/>
+                  <Input type="checkbox" id="religion-prof" value={character.attributes.skills_proficiency.religion} onChange={(e) => {onChange({attributes: { skills_proficiency: {religion: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="sleight-of-hand">Sleight of Hand <span class="skill-span">(Dex)</span></label>
-                  <Input type="text" id="sleight-of-hand" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex)} readonly/>
-                  <Input type="checkbox" id="sleight-of-hand-prof"/>
+                  <Input type="text" id="sleight-of-hand" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex.value, character.attributes.skills_proficiency.sleigth_of_hand)} readonly/>
+                  <Input type="checkbox" id="sleight-of-hand-prof" value={character.attributes.skills_proficiency.sleigth_of_hand} onChange={(e) => {onChange({attributes: { skills_proficiency: {sleigth_of_hand: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="stealth">Stealth <span class="skill-span">(Dex)</span></label>
-                  <Input type="text" id="stealth" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex)} readonly/>
-                  <Input type="checkbox" id="stealth-prof"/>
+                  <Input type="text" id="stealth" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex.value, character.attributes.skills_proficiency.stealth)} readonly/>
+                  <Input type="checkbox" id="stealth-prof" value={character.attributes.skills_proficiency.stealth} onChange={(e) => {onChange({attributes: { skills_proficiency: {stealth: e.target.checked}}})}}/>
                 </li>
                 <li>
                   <label htmlFor="survival">Survival <span class="skill-span">(Wis)</span></label>
-                  <Input type="text" id="survival" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis)} readonly/>
-                  <Input type="checkbox" id="survival-prof"/>
+                  <Input type="text" id="survival" class="wis-mod" value={getScoreModifier(character.attributes.scores.wis.value, character.attributes.skills_proficiency.survival)} readonly/>
+                  <Input type="checkbox" id="survival-prof" value={character.attributes.skills_proficiency.survival} onChange={(e) => {onChange({attributes: { skills_proficiency: {survival: e.target.checked}}})}}/>
                 </li>
               </ul>
               <div class="label">Skills</div>
@@ -342,7 +388,7 @@ function Sheet({character, onChange}) {
           <div class="att-label">
             <label htmlFor="passive-perception">Passive Wisdom (Perception)</label>
           </div>
-          <Input type="number" id="passive-perception-input" class="wis-mod" value={10 + getScoreModifier(character.attributes.scores.wis)} readonly/>
+          <Input type="number" id="passive-perception-input" class="wis-mod" value={10 + getScoreModifier(character.attributes.scores.wis.value)} readonly/>
         </section>
         <section id="other-profs" class="box text-box">
           <label htmlFor="other-profs-input">Other Proficiences and Languages</label>
@@ -360,7 +406,7 @@ function Sheet({character, onChange}) {
           <div class="initiative ac-init-speed">
             <div>
               <label htmlFor="initiative-input">Initiative</label>
-              <Input type="number" id="initiative-input" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex)}/>
+              <Input type="number" id="initiative-input" class="dex-mod" value={getScoreModifier(character.attributes.scores.dex.value)}/>
             </div>
           </div>
           <div class="speed ac-init-speed">
@@ -373,16 +419,16 @@ function Sheet({character, onChange}) {
             <div class="regular-hp">
               <div class="max-hp">
                 <label htmlFor="max-hp-input">Hit Point Maximum</label>
-                <Input type="number" id="max-hp-input" value={character.attributes.max_hp}/>
+                <Input type="number" id="max-hp-input" value={character.attributes.max_hp} onChange={(e) => onChange({attributes: {max_hp: e.target.value}})}/>
               </div>
               <div class="current-hp">
                 <label htmlFor="current-hp-input">Current Hit Points</label>
-                <Input type="number" id="current-hp-input" value={character.attributes.current_hp}/>
+                <Input type="number" id="current-hp-input" value={character.attributes.current_hp} onChange={(e) => onChange({attributes: {current_hp: e.target.value}})}/>
               </div>
             </div>
             <div class="temporary-hp">
               <label htmlFor="temporary-hp-input">Temporary Hit Points</label>
-              <Input type="number" id="temporary-hp-input" value={character.attributes.temporary_hp}/>
+              <Input type="number" id="temporary-hp-input" value={character.attributes.temporary_hp} onChange={(e) => onChange({attributes: {temporary_hp: e.target.value}})}/>
             </div>
           </div>
           <div class="hitdice">
