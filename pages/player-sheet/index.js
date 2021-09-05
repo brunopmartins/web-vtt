@@ -866,7 +866,6 @@ export default function PlayerSheet() {
   }, bioInfo);
 
   const [character, setCharacter] = useReducer((currentCharacter, changes) => {
-    console.log(character);
     return merge({}, currentCharacter, changes)
   }, characterInfo);
 
